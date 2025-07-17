@@ -1,0 +1,15 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 16" width="17" height="16">
+	<title>emblem-system-symbolic</title>
+	<defs>
+		<image  width="16" height="16" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IB2cksfwAAAUFQTFRFAAAAPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8+oewnwAAAGt0Uk5TAFD/UgOfW3HU+PvXeFy7/vGYJJn0pO4sR7z36Kc2Le0V8ITGPgE/yHs5FHC/lkjYE9ucvW7APVWzQOn8CvMP6hESCw3sDBbOMlS1N8nloU4X2kXhKhj1+YDiSnXE5jjnMS+5dlqrHKbvwiHofcMvAAAA3UlEQVR4nGNkAANGRgbGvxAWAwMLIwz8+P8HJMAHYr9jEAISPJ9AAqJwFYyf3gMFFBj/sDKCzACCtyLXGLXBUheAxmmxP5cCMk3fiD5+8R9sgTkj4zMxRiug4P8jYAE7RsZbrIyONzXOGe0DCzgzMt5RZWRwZ3x9DqLFE6h4C6O4GSPjA8UNQH4AI+NhoK5QRsZj1oz7eRlMf974p/f/PyNDNCPjQYd9ygp7XRj/MTPOBbqUIWW327wgwbkpP3a+AHuOgUH5vvx7tqDlUdMZoAJZB//eYJD5zvISyAYA8N09iFrWGrwAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<g id="g1812">
+		<path id="path2788" class="s0" d="m8.2 1c-2.5-0.1-4.9 1.2-6.3 3.5-1.9 3.3-0.7 7.6 2.6 9.6 3.3 1.9 7.6 0.8 9.6-2.6 1.9-3.3 0.7-7.6-2.6-9.6-1-0.6-2.2-0.9-3.3-0.9zm-0.2 1q1.2 0 2.3 0.5 1.1 0.4 1.9 1.3 0.9 0.8 1.3 1.9 0.5 1.1 0.5 2.3 0 1.2-0.5 2.3-0.4 1.1-1.3 1.9-0.8 0.9-1.9 1.3-1.1 0.5-2.3 0.5-1.2 0-2.3-0.5-1.1-0.4-1.9-1.3-0.9-0.8-1.3-1.9-0.5-1.1-0.5-2.3 0-1.2 0.5-2.3 0.4-1.1 1.3-1.9 0.8-0.9 1.9-1.3 1.1-0.5 2.3-0.5z"/>
+		<path id="path2790" class="s0" d="m6.7 0.1v1.6q1.3-0.3 2.6 0v-1.6zm-2.7 1l-2 1.7 1 1.2q0.8-1.1 2-1.7zm8.1 0l-1 1.2q0.1 0 0.2 0.1 1 0.6 1.8 1.6l1-1.2zm-11.6 4.2l-0.4 2.6 1.5 0.3q0-1.4 0.4-2.6zm15.1 0l-1.5 0.3q0.5 1.2 0.5 2.5l1.5-0.2zm-13.7 4.7l-1.3 0.7 1.3 2.3 1.3-0.8q-0.9-1-1.3-2.2zm12.3 0q-0.2 0.6-0.5 1.2-0.3 0.6-0.8 1.1l1.4 0.7 1.3-2.3zm-9.6 3.5l-0.5 1.5 2.4 0.9 0.6-1.5q-1.3-0.2-2.3-0.8-0.1 0-0.2-0.1zm6.8 0q-1.1 0.7-2.5 0.9l0.6 1.5 2.4-0.9z"/>
+		<path id="path2792" class="s0" d="m7.6 3c-1.6 0.1-3.1 1-3.9 2.5-1.4 2.4-0.6 5.4 1.8 6.8 2.4 1.4 5.5 0.6 6.8-1.8 1.4-2.4 0.6-5.4-1.8-6.8-0.9-0.5-1.9-0.8-2.9-0.7zm0.4 1q0.8 0 1.5 0.3 0.8 0.3 1.3 0.9 0.6 0.5 0.9 1.3 0.3 0.7 0.3 1.5 0 0.8-0.3 1.5-0.3 0.8-0.9 1.3-0.5 0.6-1.3 0.9-0.7 0.3-1.5 0.3-0.8 0-1.5-0.3-0.8-0.3-1.3-0.9-0.6-0.5-0.9-1.3-0.3-0.7-0.3-1.5 0-0.8 0.3-1.5 0.3-0.8 0.9-1.3 0.5-0.6 1.3-0.9 0.7-0.3 1.5-0.3z"/>
+		<use id="Layer 1" href="#img1" x="0" y="0"/>
+	</g>
+</svg>

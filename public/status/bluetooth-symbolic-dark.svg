@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+	<title>bluetooth-symbolic</title>
+	<defs>
+		<image  width="11" height="16" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAQCAMAAAD3Y3VMAAAAAXNSR0IB2cksfwAAAIFQTFRFPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8AAAAPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8f2gNfQAAACt0Uk5Tfvb/8rjwCLoAD7wNvUTAehX1xxmekyDV5jPrOejjJ4sdK5wUuw4Hv/HuewfJBcwAAACESURBVHicPY7LCsJADEXnNHU2pWhBClJEEEH//3MUBleiiIhQVHzFzJQ2i5vD5eaBA5dKFVHr2c9EyKKX8zbt2MNzYM25Ry5o/auEm/EEWsNzytRcK45dXupLJYfEDZzK4pEyC/Y2Ow0Yy9f5z6gJ/f65hv7Wil38YbM1XZrr1gw/j2d/y/Mfgd3Vn0AAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<path class="s0" d="m5.7 0c-0.9 0-1.5 0-2 0.3q-0.4 0.2-0.6 0.6-0.1 0.5-0.1 1.1v12q0 0.6 0.1 1.1 0.2 0.4 0.6 0.6c0.5 0.3 1.1 0.3 2 0.3h5.6c0.9 0 1.5 0 2-0.3q0.4-0.2 0.6-0.6 0.1-0.5 0.1-1.1v-12q0-0.6-0.1-1.1-0.1-0.1-0.1-0.2-0.1-0.1-0.2-0.2 0 0-0.1-0.1-0.1-0.1-0.2-0.1c-0.5-0.3-1.1-0.3-2-0.3 0 0-5.6 0-5.6 0zm2.3 1.3l4.2 4.2-2.9 2.5 2.9 2.5-4.2 4.2v-5.6l-2.4 2-0.7-0.7 2.8-2.4-2.8-2.4 0.7-0.7 2.4 2zm1 2.4v3.3l1.8-1.5zm0 5.3v3.3l1.7-1.8z"/>
+	<use id="Layer 1" href="#img1" x="3" y="0"/>
+</svg>

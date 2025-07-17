@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+	<title>display-brightness-symbolic</title>
+	<defs>
+		<image  width="16" height="16" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IB2cksfwAAAJ9QTFRFAAAAPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8ZcCHbQAAADV0Uk5TAICvMzauO78BUbf/tE/AOYPmThR/6BhJx1q89xbt9PHEvRpHeIIo/XQ6viye4tyYKgI3NapqxN0TAAAAk0lEQVR4nGNkgABGhv8wBqYAE+NfqCgL42+QABsjCDAwMv5mY/wI0SIAFPjBwMD5BmoGLwfjKwZuIIPnJURAgvE5A1iA/xlQAGi8NOMTiIDQY0awgNyPVxABkYeMYC0KP6FaxO7DDOW9BxaQuAt1qcovdsanDDKMNyDWajLeUwa7jfEnxzmw0w3PwpxucAar51AFAFKNIhO9lyjeAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<g>
+		<path class="s0" d="m8 3c-1.3 0-2.6 0.5-3.5 1.5-1 0.9-1.5 2.2-1.5 3.5 0 1.3 0.5 2.6 1.5 3.5 0.9 1 2.2 1.5 3.5 1.5 1.3 0 2.6-0.5 3.5-1.5 1-0.9 1.5-2.2 1.5-3.5 0-1.3-0.5-2.6-1.5-3.5-0.9-1-2.2-1.5-3.5-1.5zm0 1v8c-1.1 0-2.1-0.4-2.8-1.2-0.8-0.7-1.2-1.7-1.2-2.8 0-1.1 0.4-2.1 1.2-2.8 0.7-0.8 1.7-1.2 2.8-1.2zm0.5-4h-1v2h1zm4.8 2l-1.4 1.4 0.7 0.7 1.4-1.4zm-10.6 0l-0.7 0.7 1.4 1.4 0.7-0.7zm13.3 5.5h-2v1h2zm-14 0h-2v1h2zm10.6 4.4l-0.7 0.7 1.4 1.4 0.7-0.7zm-9.2 0l-1.4 1.4 0.7 0.7 1.4-1.4zm5.1 2.1h-1v2h1z"/>
+		<use id="Layer 1" href="#img1" x="0" y="0"/>
+	</g>
+</svg>

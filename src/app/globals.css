@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  /* Base Ubuntu Colors */
+  --color-ub-cool-grey: #2e3436;
+  --color-ub-gedit-dark: #202020;
+  --color-ub-gedit-light: #3c3f41;
+  --color-ubt-gedit-orange: #e95420;
+
+  --color-ub-bg: #1a1a1a;
+  --color-ub-card: #252525;
+  --color-ub-border: #3c3c3c;
+  --color-ub-orange: #ff7800;
+  --color-ub-light: #f4f4f4;
+  --color-ub-dark: #1a1a1a;
+  --color-ub-muted: #bcbcbc;
+  --color-ub-hover: #2d2d2d;
+
+  --color-ub-light-gray: #f9f9f9;
+  --color-ub-soft-gray: #eaeaea;
+  --color-ub-hover-gray: #dcdcdc;
+
+  /* Calendar category colors */
+  --color-category-work: #3b82f6;     /* blue-500 */
+  --color-category-personal: #22c55e; /* green-500 */
+  --color-category-important: #ef4444;/* red-500 */
+  --color-category-default: #6b7280;  /* gray-500 */
+
+  /* Extended Ubuntu/Theme Colors */
+  --color-ub-warm-grey: #3e3e3e;
+  --color-ubt-grey: #f5f5f5;
+  /* --color-ubb-boot-grey: #2C0031; */
+  --color-ubb-boot-grey: #AEA79F;
+  --color-gnome-bg: #241f31;
+  --color-gnome-text: #f5f5f5;
+  --color-gnome-caret: #33ff33;
+
+  /* Animation */
+  --animation-shake: shake 0.3s ease-in-out;
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+  }
+}
+
+/* WebKit Browsers */
+input[type='time']::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1); /* white in dark mode */
+}
+
+/* Firefox (limited control, just a fallback tweak) */
+input[type='time']::-moz-focus-inner {
+  color: white;
+}
+
+
+
+input[type='range']::-webkit-slider-runnable-track {
+  background-color: #d1d5db; /* gray-300 */
+  height: 0.5rem;
+  border-radius: 9999px;
+}
+input[type='range']:focus::-webkit-slider-runnable-track {
+  background-color: #d1d5db;
+}
+.dark input[type='range']::-webkit-slider-runnable-track {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+input[type='range']::-moz-range-track {
+  background-color: #d1d5db;
+  height: 0.5rem;
+  border-radius: 9999px;
+}
+.dark input[type='range']::-moz-range-track {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

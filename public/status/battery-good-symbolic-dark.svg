@@ -1,0 +1,14 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+	<title>battery-good-symbolic</title>
+	<defs>
+		<image  width="10" height="15" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAPCAMAAADqIa48AAAAAXNSR0IB2cksfwAAAEJQTFRFAAAAPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8I0fOvwAAABZ0Uk5TAP+PkO0VF+oBBPv+AgP9GRzmZ9PQZZ4QcM0AAABGSURBVHicY2RgYGAE4v9AiglIgAETIwvjbzCLjZGRkf0HmMkJZMIUoDEZwaz/ZDO5Gb+CmTxAyzg+gpkCjIxCjO/ATGFGAIuPFWC5bMNbAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<g>
+		<path class="s0" d="m5 13v-7h6v7z"/>
+		<path class="s0" d="m3 12.3c0 0.9 0 1.5 0.3 2q0.2 0.4 0.6 0.6 0.5 0.1 1.1 0.1h6q0.6 0 1.1-0.1 0.4-0.2 0.6-0.6c0.3-0.5 0.3-1.1 0.3-2v-8.7c0-0.8 0-1.4-0.3-1.9q0-0.1-0.1-0.2-0.1-0.1-0.1-0.2-0.1 0-0.2-0.1-0.1 0-0.2-0.1c-0.3-0.1-0.7-0.1-1.1-0.1h-1v-1h-4v1h-1c-0.4 0-0.8 0-1.1 0.1q-0.4 0.2-0.6 0.6c-0.3 0.5-0.3 1.1-0.3 1.9 0 0 0 8.7 0 8.7zm1 0v-8.7c0-0.8 0-1.3 0.1-1.4q0.1-0.1 0.2-0.1 0.1-0.1 0.7-0.1h6q0.6 0 0.7 0.1 0.2 0 0.2 0.1c0.1 0.1 0.1 0.6 0.1 1.4v8.7c0 0.9 0 1.3-0.1 1.5q-0.1 0.1-0.2 0.1-0.1 0.1-0.7 0.1h-6q-0.5 0-0.7-0.1-0.1 0-0.2-0.1c-0.1-0.2-0.1-0.6-0.1-1.5z"/>
+		<use id="Layer 1" href="#img1" x="3" y="0"/>
+	</g>
+</svg>

@@ -1,0 +1,30 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+	<title>tars</title>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<g id="26d6d2f1-7c2f-40f0-8ecd-75e8a71ebdf6">
+		<path fill-rule="evenodd" class="s0" d="m0 0h1080v1080h-1080z"/>
+	</g>
+	<g id="8819805c-524d-4510-bd78-3f60ae9544e8">
+	</g>
+	<g>
+		<g>
+			<g>
+				<path class="s0" d="m439.6 927.9h-146v-788.4h146zm-116.8-29.2h87.6v-730h-87.6z"/>
+			</g>
+			<g>
+				<path fill-rule="evenodd" class="s0" d="m541.8 927.9h-131.4v-788.4h131.4v29.2h-102.2v730h102.2z"/>
+			</g>
+			<g>
+				<path class="s0" d="m790 927.9h-146v-788.4h146zm-116.8-29.2h87.6v-730h-87.6z"/>
+			</g>
+			<g>
+				<path class="s0" d="m673.2 519.1h-262.8v-204.4h262.8zm-233.6-29.2h204.4v-146h-204.4z"/>
+			</g>
+			<g>
+				<path fill-rule="evenodd" class="s0" d="m673.2 927.9h-146v-379.6h29.2v350.4h87.6v-730h-87.6v116.8h-29.2v-146h146z"/>
+			</g>
+		</g>
+	</g>
+</svg>

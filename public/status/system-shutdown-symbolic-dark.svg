@@ -1,0 +1,14 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+	<title>system-shutdown-symbolic</title>
+	<defs>
+		<image  width="13" height="13" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAMAAABFNRROAAAAAXNSR0IB2cksfwAAAK5QTFRFAAAAPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8X7jhCAAAADp0Uk5TAP51EBNojskND2815+Qdo2tzmOMnMdH9AhHz6iIp16hjZaXiCQuFuwYIwIKQ3GAlByZk3oo0tvnhtWMeOgoAAAB7SURBVHicNc4xC4JQFMXx+9dQ1EHCJEQkGgyC1r7/F3AVGhwcGgQVnEQwK5/Pd5bLD86Fg2zhp4+IxaJ0YF7lwKTkfe2RgM+km7YPIYP5O0JEZxTDmcYogZS37MngQm10hcyh0sgbF7nBS+EO5brlwZ5CLZMn/QmqVuQPeO0bsjKxFdUAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<g id="layer1">
+		<path id="path3202" class="s0" d="m1 7.4q0 1.1 0.3 2.1c0.9 2.7 3.4 4.5 6.2 4.5 2.8 0 5.3-1.8 6.2-4.5 0.9-2.7-0.1-5.7-2.5-7.3l-0.5 0.8c1.9 1.4 2.8 3.9 2 6.2-0.7 2.3-2.8 3.8-5.2 3.8-2.4 0-4.5-1.5-5.2-3.8-0.8-2.3 0.1-4.8 2-6.2l-0.5-0.8c-1.8 1.2-2.8 3.2-2.8 5.2z"/>
+		<path id="path3206" class="s0" d="m7 1v7h1v-7z"/>
+		<use id="Layer 1" href="#img1" x="1" y="1"/>
+	</g>
+</svg>

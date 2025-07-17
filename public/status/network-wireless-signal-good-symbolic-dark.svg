@@ -1,0 +1,15 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+	<title>network-wireless-signal-good-symbolic</title>
+	<defs>
+		<image  width="16" height="13" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAANCAMAAACXZR4WAAAAAXNSR0IB2cksfwAAAKVQTFRFAAAAPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw84kb6rAAAADd0Uk5TAApYms7w/9+cFRaU3EYElemfUfF9A4NPH+wuTab1pEwk5NfTo/7eF/hH/JP9jgHU0BP08xA+OY8zkuwAAACWSURBVHicTc7BCwFhEIfh36tYKXvYiy2JtBFKOfj/73LisJGEKHJQm1a7h12f3S/MYZp5ZpoGSdhInZdp1IC8QiTXZJIYz4zuKsOtPzx8eDbhphbE1dxB7Rpnu9HJ0gtSwNFCNzmZo3L9g4XeNfqAhuyLvp9vVIBG7EwO8lAWNGGrAWt9YUqocbb6gWbmvaX+QHMWZfEGYZokRVrmv84AAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		.s0 { fill: #808080 } 
+		.s1 { fill: #ffffff } 
+	</style>
+	<g>
+		<path class="s0" d="m8 2c-2.6 0-5.2 0.8-7.4 2.5l-0.3 0.2 0.2 0.3 7.5 9.7 7.7-10-0.3-0.2q-0.8-0.6-1.7-1.1-0.8-0.4-1.8-0.8-0.9-0.3-1.9-0.4-1-0.2-2-0.2zm0 1c2.2 0 4.3 0.7 6.2 2l-6.2 8-6.2-8.1c1.9-1.2 4-1.9 6.2-1.9z"/>
+		<path class="s1" d="m2.4 6.9q1.2-0.9 2.7-1.4 1.4-0.5 2.9-0.5 1.5 0 2.9 0.5 1.5 0.5 2.7 1.4l-5.6 7.2z"/>
+		<use id="Layer 1" href="#img1" x="0" y="2"/>
+	</g>
+</svg>

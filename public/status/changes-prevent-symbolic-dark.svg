@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+	<title>changes-prevent-symbolic</title>
+	<defs>
+		<image  width="10" height="14" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAOCAMAAAAhfX2ZAAAAAXNSR0IB2cksfwAAAD9QTFRFAAAAPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8Hr9xtwAAABV0Uk5TADvG/9BDJ+eSKiun9z7btK7iOjP++FuTpQAAADtJREFUeJytxtEGgEAUANEZl32sZf//D1dJj2vpJtEHNAxHUPOBFJ9OWTyA6i6xbslmT07uYn4ZvP3KC4bJCieJcP+EAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<path class="s0" d="m8 1q-0.8 0-1.5 0.3-0.8 0.3-1.3 0.9-0.6 0.5-0.9 1.3-0.3 0.7-0.3 1.5v2h-1v8h10v-8h-1v-2q0-0.8-0.3-1.5-0.3-0.8-0.9-1.3-0.5-0.6-1.3-0.9-0.7-0.3-1.5-0.3zm0 1c1.7 0 3 1.3 3 3v2h-6v-2c0-1.7 1.3-3 3-3z"/>
+	<use id="Layer 1" href="#img1" x="3" y="1"/>
+</svg>
