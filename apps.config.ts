@@ -1,4 +1,3 @@
-// import GitHubRedirectScreen from '@/components/apps/GitHubRedirectScreen';
 import type { WindowType } from '@/components/types/windowTypes';
 import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';

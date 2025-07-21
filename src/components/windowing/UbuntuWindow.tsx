@@ -4,9 +4,7 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { Rnd } from "react-rnd";
-
 interface UbuntuWindowProps {
-  id: string;
   title: string;
   position: { x: number; y: number };
   size: { width: number; height: number };
@@ -56,22 +54,30 @@ const UbuntuWindow: React.FC<UbuntuWindowProps> = ({
   }, [size, position, isMaximized, isMinimized]);
 
   // Handle maximize / restore
-  useEffect(() => {
-    if (isMaximized) {
-      previousPos.current = windowPos;
-      previousSize.current = windowSize;
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight - navbarHeight,
-      });
 
-      setWindowPos({ x: 0, y: navbarHeight });
-    } else {
-      setWindowSize(previousSize.current);
-      setWindowPos(previousPos.current);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMaximized]);
+useEffect(() => {
+  const maximizeWindow = () => {
+  previousPos.current = windowPos;
+  previousSize.current = windowSize;
+  setWindowSize({
+    width: window.innerWidth,
+    height: window.innerHeight - navbarHeight,
+  });
+  setWindowPos({ x: 0, y: navbarHeight });
+};
+
+const restoreWindow = () => {
+  setWindowSize(previousSize.current);
+  setWindowPos(previousPos.current);
+};
+
+  if (isMaximized) {
+    maximizeWindow();
+  } else {
+    restoreWindow();
+  }
+}, [isMaximized, windowPos, windowSize]);
+
 
   const minimizedStyle: React.CSSProperties  = isMinimized
     ? { opacity: 0, pointerEvents: "none", visibility: "hidden" }
@@ -120,15 +126,18 @@ const UbuntuWindow: React.FC<UbuntuWindowProps> = ({
             {title}
           </div>
           <div className="flex gap-2">
-            <div
+            <button
               onClick={onMinimize}
+              aria-label="Minimize window"
               className="w-3 h-3 bg-yellow-500 rounded-full hover:brightness-125 cursor-pointer"
             />
-            <div
+            <button
+              aria-label="Maximize window"
               onClick={onMaximize}
               className="w-3 h-3 bg-green-500 rounded-full hover:brightness-125 cursor-pointer"
             />
-            <div
+            <button
+              aria-label="Close window"
               onClick={onClose}
               className="w-3 h-3 bg-red-500 rounded-full hover:brightness-125 cursor-pointer"
             />

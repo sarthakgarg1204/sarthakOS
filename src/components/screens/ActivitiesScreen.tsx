@@ -30,8 +30,10 @@ export default function Activities({
   setCurrentWorkspace,
   wallpaper,
   className,
-}: ActivitiesProps) {
+}: Readonly<ActivitiesProps>) {
   const [searchQuery, setSearchQuery] = useState('');
+  let scale: number;
+  let columns: number;
 
   const filteredWindows = useMemo(() => {
     const openWindows = openWindowsPerWorkspace[currentWorkspace] || [];
@@ -66,6 +68,17 @@ export default function Activities({
   ) => {
     if (isDimmed) {
       // Show only the wallpaper background for peek previews
+let backgroundPosition: string;
+
+if (dimmedPosition === 'left') {
+  backgroundPosition = 'right center';
+} else if (dimmedPosition === 'right') {
+  backgroundPosition = 'left center';
+} else {
+  backgroundPosition = 'center';
+}
+
+
       return (
         <div
           className={clsx(
@@ -75,12 +88,7 @@ export default function Activities({
           style={{
             backgroundImage: `url(${wallpaper})`,
             backgroundSize: 'cover',
-            backgroundPosition:
-              dimmedPosition === 'left'
-                ? 'right center'
-                : dimmedPosition === 'right'
-                ? 'left center'
-                : 'center',
+            backgroundPosition,
             filter: 'brightness(0.7)',
           }}
         />
@@ -88,11 +96,20 @@ export default function Activities({
     }
 
     const total = windows.length;
-    const columns = total === 1 ? 1 : total <= 4 ? 2 : total <= 9 ? 3 : 4;
+    if (total === 1) columns = 1;
+    else if (total <= 4) columns = 2;
+    else if (total <= 9) columns = 3;
+    else columns = 4;
+
     const baseWidth = 900;
     const baseHeight = 600;
-    const scale =
-      total === 1 ? 0.65 : total === 2 ? 0.5 : total <= 6 ? 0.35 : total <= 9 ? 0.25 : 0.2;
+
+if (total === 1) scale = 0.65;
+else if (total === 2) scale = 0.5;
+else if (total <= 6) scale = 0.35;
+else if (total <= 9) scale = 0.25;
+else scale = 0.2;
+
 
     const fakeWidth = baseWidth * scale;
     const fakeHeight = baseHeight * scale;
@@ -112,10 +129,11 @@ export default function Activities({
         }}
       >
         {rows.length > 0 ? (
-          rows.map((row, i) => (
-            <div key={i} className="flex justify-center items-center gap-x-6">
+          rows.map((row) => (
+            <div key={row.map(r => r.id).join('-')} className="flex justify-center items-center gap-x-6">
               {row.map((win) => (
-                <div
+                <button
+                  role="button"
                   key={win.id}
                   onClick={() => handleAppClick(win.id)}
                   className="relative transition-transform hover:scale-105 hover:ring-2 hover:ring-orange-400/80 rounded-lg cursor-pointer group"
@@ -143,7 +161,7 @@ export default function Activities({
                   <div className="absolute bottom-[-32px] left-1/2 -translate-x-1/2 px-2 py-1 rounded-full text-sm bg-zinc-900/90 border border-zinc-600 text-white shadow whitespace-nowrap">
                     {win.title}
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           ))
@@ -182,12 +200,12 @@ export default function Activities({
       <div className="flex-1 flex justify-center items-start px-4 py-6 relative">
         {/* Left Peek */}
         {currentWorkspace > 0 && (
-          <div
+          <button
             className="absolute left-0 top-0 h-full w-[110px] -ml-2.5 z-10 cursor-pointer"
             onClick={() => setCurrentWorkspace(currentWorkspace - 1)}
           >
             {renderWorkspacePreview([], true, 'left')}
-          </div>
+          </button>
         )}
 
         {/* Main Workspace */}
@@ -202,12 +220,12 @@ export default function Activities({
 
         {/* Right Peek */}
         {currentWorkspace < openWindowsPerWorkspace.length - 1 && (
-          <div
+          <button
             className="absolute right-0 top-0 h-full w-[110px] -mr-2.5 z-10 cursor-pointer"
             onClick={() => setCurrentWorkspace(currentWorkspace + 1)}
           >
             {renderWorkspacePreview([], true, 'right')}
-          </div>
+          </button>
         )}
       </div>
     </div>

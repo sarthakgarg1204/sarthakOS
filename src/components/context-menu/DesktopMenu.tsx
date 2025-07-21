@@ -25,7 +25,7 @@ export default function DesktopMenu({
   openApp,
   addNewFolder,
   position,
-}: Props) {
+}: Readonly<Props>) {
   const mounted = useMounted();
   const [isFullScreen, setIsFullScreen] = useState(false);
 
@@ -74,13 +74,13 @@ export default function DesktopMenu({
       darkClassName="bg-[#1a1a1a] text-white border border-white/10"
       style={{ top: `${position.y}px`, left: `${position.x}px` }}
     >
-      {menuItems.map((item, i) =>
-        item === 'divider' ? (
-          <Divider key={i} />
-        ) : (
-          <MenuItem key={i} {...item} />
-        )
-      )}
+      {menuItems.map((item) => {
+        if(item === 'divider') {
+          return <Divider key={item} />;
+        } else {
+            return <MenuItem key={item.label} {...item} />;
+        }
+      })}
     </ThemedBox>
   );
 }
@@ -89,13 +89,13 @@ function MenuItem({
   label,
   onClick,
   disabled = false,
-}: {
+}: Readonly<{
   label: string;
   onClick?: () => void;
   disabled?: boolean;
-}) {
+}>) {
   return (
-    <div
+    <button
       onClick={disabled ? undefined : onClick}
       className={clsx(
         'w-full px-3 py-1.5 rounded-sm transition',
@@ -105,7 +105,7 @@ function MenuItem({
       )}
     >
       <span className="pl-5">{label}</span>
-    </div>
+    </button>
   );
 }
 

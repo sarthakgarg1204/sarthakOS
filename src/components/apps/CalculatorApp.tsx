@@ -36,7 +36,7 @@ for (let base = 2; base <= 36; base++) {
   parser.functions[`log${base}`] = (x: number) => Math.log(x) / Math.log(base);
 }
 
-export default function CalculatorApp({ id }: CalculatorAppProps) {
+export default function CalculatorApp({ id }: Readonly<CalculatorAppProps>) {
   const [entries, setEntries] = useState<TerminalEntry[]>([]);
   const [currentCommand, setCurrentCommand] = useState('');
   const [history, setHistory] = useState<string[]>([]);
@@ -129,7 +129,7 @@ export default function CalculatorApp({ id }: CalculatorAppProps) {
       const expr = parser.parse(cmd);
       const result = expr.evaluate(variables.current);
 
-      const match = cmd.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\s*=/);
+      const match = RegExp(/\d\W/).exec(cmd);
       if (match) {
         const varName = match[1];
         variables.current[varName] = result;
@@ -149,6 +149,9 @@ export default function CalculatorApp({ id }: CalculatorAppProps) {
       ref={containerRef}
       className="h-full w-full bg-[#2C001E] text-white p-3 text-sm font-mono leading-6 overflow-y-auto"
       onClick={() => inputRef.current?.focus()}
+      tabIndex={0} // Makes the div focusable via keyboard
+      role="textbox"
+      aria-label="Calculator input area"
     >
       <div className="mb-1 text-[#FFA07A]">Ubuntu Terminal Calculator v2.12.7</div>
       <div className="mb-1 text-[#ccc]">Type &quot;help&quot; for instructions.</div>

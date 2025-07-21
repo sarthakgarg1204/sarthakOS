@@ -20,7 +20,7 @@ export default function ThemedBox({
   lightClassName = 'bg-white text-black',
   darkClassName = 'bg-black text-white',
   style,
-}: Props) {
+}: Readonly<Props>) {
   const { resolvedTheme } = useTheme();
   const mounted = useMounted();
   if (!mounted) return null;

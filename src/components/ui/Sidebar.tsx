@@ -34,7 +34,7 @@ export default function SideBar({
   isMaximized,
   isAllAppsOpen,
   appsOpenInOtherWorkspaces,
-}: Props) {
+}: Readonly<Props>) {
   if (!apps) return null;
 
   // 🔍 Get all favourite app IDs from the config
@@ -94,14 +94,15 @@ export default function SideBar({
 function ShowApplicationsButton({
   toggleAllApps,
   isActive,
-}: {
+}: Readonly<{
   toggleAllApps: () => void;
   isActive: boolean;
-}) {
+}>) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div
+    <button
+      type="button"
       className={`w-10 h-10 m-1 rounded flex items-center justify-center relative cursor-pointer transition-all ${
         isActive ? 'bg-white/20' : 'hover:bg-white/10'
       }`}
@@ -123,6 +124,6 @@ function ShowApplicationsButton({
       >
         Show Applications
       </div>
-    </div>
+    </button>
   );
 }

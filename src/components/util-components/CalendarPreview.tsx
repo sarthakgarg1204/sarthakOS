@@ -43,6 +43,25 @@ export default function CalendarPreview() {
     setVisible(false); // Hide preview
   };
 
+  const getDayClass = (isToday: boolean, isCurrent: boolean, dark: boolean) => {
+  if (isToday) {
+    return dark
+      ? 'bg-orange-500 text-white font-bold'
+      : 'bg-orange-500 text-black font-bold';
+  }
+
+  if (isCurrent) {
+    return dark
+      ? 'text-white hover:bg-orange-500 hover:text-white'
+      : 'text-gray-900 hover:bg-orange-500 hover:text-white';
+  }
+
+  return dark
+    ? 'text-gray-500 hover:bg-orange-400 hover:text-white'
+    : 'text-gray-400 hover:bg-orange-200 hover:text-black';
+};
+
+
   if (!visible) return null;
 
   return (
@@ -103,17 +122,7 @@ export default function CalendarPreview() {
               onClick={openCalendarApp}
               className={clsx(
                 'w-7 h-7 rounded-full flex items-center justify-center text-sm select-none transition',
-                isDayToday
-                  ? isDark
-                    ? 'bg-orange-500 text-white font-bold'
-                    : 'bg-orange-500 text-black font-bold'
-                  : isDayCurrent
-                  ? isDark
-                    ? 'text-white hover:bg-orange-500 hover:text-white'
-                    : 'text-gray-900 hover:bg-orange-500 hover:text-white'
-                  : isDark
-                  ? 'text-gray-500 hover:bg-orange-400 hover:text-white'
-                  : 'text-gray-400 hover:bg-orange-200 hover:text-black'
+                getDayClass(isDayToday, isDayCurrent, isDark)
               )}
             >
               {day.date()}

@@ -13,8 +13,16 @@ type StatusCardProps = {
   lockScreen?: () => void;
   toggleVisible?: () => void;
 };
+interface StatusItem {
+  icon: string;
+  label: string;
+  sub?: string;
+  active?: boolean;
+  arrow?: boolean;
+  onClick?: () => void;
+}
 
-export default function StatusCard({ visible, shutDown, lockScreen }: StatusCardProps) {
+export default function StatusCard({ visible, shutDown, lockScreen }: Readonly<StatusCardProps>) {
   const [soundLevel, setSoundLevel] = useState(75);
   const [brightnessLevel, setBrightnessLevel] = useState(100);
   const { resolvedTheme, setTheme } = useTheme();
@@ -61,17 +69,27 @@ export default function StatusCard({ visible, shutDown, lockScreen }: StatusCard
     { icon: 'system-shutdown-symbolic', label: 'Power', onClick: shutDown },
   ];
 
-  const items = [
+  const items: StatusItem[] = [
     { icon: 'network-wireless-signal-good-symbolic', label: 'Wi-Fi', sub: 'sarthak', active: true, arrow: true },
-    { icon: 'bluetooth-symbolic', label: 'Bluetooth', active: true, arrow: true },
+    { icon: 'bluetooth-symbolic', label: 'Bluetooth',sub: 'On', active: true, arrow: true },
     { icon: 'power-profile-balanced-symbolic', label: 'Power Mode', sub: 'Balanced', active: false, arrow: true },
     { icon: 'weather-clear-night-symbolic', label: 'Night Light', active: false },
-    { icon: 'preferences-desktop-theme-symbolic', label: 'Dark Style' },
+    { icon: 'preferences-desktop-theme-symbolic', label: 'Dark Style',
+    onClick: () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'), },
     { icon: 'airplane-mode-symbolic', label: 'Airplane Mode', active: false },
   ];
 
-  const getIconSrc = (name: string, isActive = true) =>
-    `/status/${resolvedTheme === 'light' && !isActive ? `${name}-dark` : name}.svg`;
+  // For inactive status items
+const getInactiveIconSrc = (name: string) => {
+  return resolvedTheme === 'light'
+    ? `/status/${name}-dark.svg`
+    : `/status/${name}.svg`;
+};
+
+// For active status items
+const getActiveIconSrc = (name: string) => {
+  return `/status/${name}.svg`; // always same for active
+};
 
   if (!mounted) return null;
 
@@ -98,7 +116,7 @@ export default function StatusCard({ visible, shutDown, lockScreen }: StatusCard
         <div className="flex justify-between items-center mb-4 px-1">
           <div className="flex items-center gap-2 text-sm font-medium">
             <Image
-              src={getIconSrc('battery-good-symbolic', resolvedTheme !== 'light')}
+              src={getInactiveIconSrc('battery-good-symbolic')}
               alt="Battery"
               width={20}
               height={20}
@@ -107,9 +125,9 @@ export default function StatusCard({ visible, shutDown, lockScreen }: StatusCard
             <span className="tracking-tight">100%</span>
           </div>
           <div className="flex gap-2">
-            {topActions.map((btn, i) => (
+            {topActions.map((btn) => (
               <button
-                key={i}
+                key={btn.label}
                 onClick={btn.onClick}
                 className={clsx(
                   'w-9 h-9 flex items-center justify-center rounded-full border transition-colors duration-200',
@@ -119,7 +137,7 @@ export default function StatusCard({ visible, shutDown, lockScreen }: StatusCard
                 )}
               >
                 <Image
-                  src={getIconSrc(btn.icon, resolvedTheme !== 'light')}
+                  src={getInactiveIconSrc(btn.icon)}
                   alt={btn.label}
                   width={16}
                   height={16}
@@ -144,9 +162,9 @@ export default function StatusCard({ visible, shutDown, lockScreen }: StatusCard
             value: brightnessLevel,
             onChange: handleBrightness,
           },
-        ].map((slider, i) => (
-          <div className="flex items-center gap-3 mb-3" key={i}>
-            <Image src={getIconSrc(slider.icon, resolvedTheme !== 'light')} alt={slider.label} width={20} height={20} />
+        ].map((slider) => (
+          <div className="flex items-center gap-3 mb-3" key={slider.label}>
+            <Image src={getInactiveIconSrc(slider.icon)} alt={slider.label} width={20} height={20} />
             <div className="flex-1">
               <input
                 type="range"
@@ -167,25 +185,37 @@ export default function StatusCard({ visible, shutDown, lockScreen }: StatusCard
 
         {/* Status Toggles */}
         <div className="grid grid-cols-2 gap-2 mt-3">
-          {items.map((item, i) => {
+          {items.map((item,) => {
             const isDarkModeToggle = item.label === 'Dark Style' && resolvedTheme === 'dark';
-            const isActive = item.active || isDarkModeToggle;
+            const isStatusActive = item.active || isDarkModeToggle;
+
+            const getIconSrcFunction = (name: string) => {
+            if(isStatusActive) {
+        return getActiveIconSrc(name);
+    } else {
+        return getInactiveIconSrc(name);
+    }}
+
+            let statusButtonClass = '';
+if (isStatusActive) {
+  statusButtonClass = 'bg-[#f25d27] hover:bg-[#ec4d1f] text-white';
+} else if (resolvedTheme === 'light') {
+  statusButtonClass = 'bg-white hover:bg-[#f0f0f0] text-[#1c1c1c]';
+} else {
+  statusButtonClass = 'bg-white/10 hover:bg-white/20 text-white';
+}
 
             return (
-              <div
-                key={i}
+              <button
+                key={item.label}
                 onClick={() => handleItemClick(item.label)}
                 className={clsx(
                   'flex items-center justify-between px-3 py-3 rounded-full cursor-pointer transition-colors duration-200 shadow-sm',
-                  isActive
-                    ? 'bg-[#f25d27] hover:bg-[#ec4d1f] text-white'
-                    : resolvedTheme === 'light'
-                    ? 'bg-white hover:bg-[#f0f0f0] text-[#1c1c1c]'
-                    : 'bg-white/10 hover:bg-white/20 text-white'
+                  statusButtonClass
                 )}
               >
                 <div className="flex items-center gap-2">
-                  <Image src={getIconSrc(item.icon, isActive)} alt={item.label} width={20} height={20} />
+                  <Image src={getIconSrcFunction(item.icon)} alt={item.label} width={20} height={20} />
                   <div className="flex flex-col">
                     <span className="text-[13px] font-medium">{item.label}</span>
                     {item.sub && <span className="text-xs opacity-70 -mt-0.5">{item.sub}</span>}
@@ -201,7 +231,7 @@ export default function StatusCard({ visible, shutDown, lockScreen }: StatusCard
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 )}
-              </div>
+              </button>
             );
           })}
         </div>

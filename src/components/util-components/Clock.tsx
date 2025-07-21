@@ -10,7 +10,7 @@ type ClockProps = {
   onlyDay?: boolean;
 };
 
-export default function Clock({ onlyTime, onlyDay }: ClockProps) {
+export default function Clock({ onlyTime, onlyDay }: Readonly<ClockProps>) {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {

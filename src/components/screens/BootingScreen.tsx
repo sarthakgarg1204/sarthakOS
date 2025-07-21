@@ -8,7 +8,7 @@ type BootingScreenProps = {
   turnOn: () => void;
 };
 
-export default function BootingScreen({ visible, isShutDown, turnOn }: BootingScreenProps) {
+export default function BootingScreen({ visible, isShutDown, turnOn }: Readonly<BootingScreenProps>) {
   const show = visible || isShutDown;
 
   return (
@@ -29,7 +29,8 @@ export default function BootingScreen({ visible, isShutDown, turnOn }: BootingSc
       />
 
       {/* Power / Spinner Button */}
-      <div
+      <button
+      type="button"
         className="w-10 h-10 flex justify-center items-center rounded-full outline-none cursor-pointer mb-6"
         onClick={turnOn}
       >
@@ -52,7 +53,7 @@ export default function BootingScreen({ visible, isShutDown, turnOn }: BootingSc
             className={`w-10 ${visible ? 'animate-spin' : ''}`}
           />
         )}
-      </div>
+      </button>
 
       {/* Ubuntu Name(Text) */}
       <Image

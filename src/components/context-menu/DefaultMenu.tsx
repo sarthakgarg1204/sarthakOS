@@ -10,7 +10,7 @@ type Props = {
   onReset?: () => void;
 };
 
-export default function DefaultMenu({ active, position, onReset }: Props) {
+export default function DefaultMenu({ active, position, onReset }: Readonly<Props>) {
   const [menuPos, setMenuPos] = useState(position);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export default function DefaultMenu({ active, position, onReset }: Props) {
         href="mailto:sarthakgarg7124@gmail.com"
       />
       <Divider />
-      <div
+      <button
         onClick={() => {
           if (onReset) onReset();
           else {
@@ -93,7 +93,7 @@ export default function DefaultMenu({ active, position, onReset }: Props) {
       >
         <span>🧹</span>
         <span>Reset Ubuntu</span>
-      </div>
+      </button>
     </ThemedBox>
   );
 }
@@ -102,11 +102,11 @@ function MenuLink({
   icon,
   label,
   href,
-}: {
+}: Readonly<{
   icon: string;
   label: string;
   href: string;
-}) {
+}>) {
   return (
     <a
       href={href}

@@ -12,6 +12,17 @@ import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import apps from '../../../apps.config';
 import wallpapers from '../../../wallpaper.config';
+interface FolderScreenProps {
+  name: string;
+}
+
+const FolderScreen: React.FC<FolderScreenProps> = ({ name }) => {
+  return <div className="p-4 text-white">📁 {name}</div>;
+};
+
+const FolderScreenWrapper: React.FC<{ name: string }> = ({ name }) => (
+  <FolderScreen name={name} />
+);
 
 type DesktopScreenProps = {
   bgImageName: string;
@@ -25,7 +36,7 @@ type DesktopScreenProps = {
   changeBackgroundImage,
   lockScreen,
   shutDown,
-}: DesktopScreenProps) {
+}: Readonly<DesktopScreenProps>) {
   const [appsList, setAppsList] = useState([...apps]);
   const [showNameBar, setShowNameBar] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
@@ -128,7 +139,7 @@ type DesktopScreenProps = {
       desktop_shortcut: true,
       isExternalApp: false,
       url: '',
-      screen: () => <div className="p-4 text-white">📁 {folderName}</div>,
+      screen: () => <FolderScreenWrapper name={folderName} />,
     };
 
     setAppsList((prev) => [...prev, newFolder]);
@@ -164,29 +175,40 @@ type DesktopScreenProps = {
 
   useEffect(() => {
     const folders = localStorage.getItem('new_folders');
-    if (folders) {
-      const parsed = JSON.parse(folders);
-      parsed.forEach((folder: { id: string; name: string }) => {
-        const { id, name } = folder;
-        setAppsList((prev) => {
-          if (prev.some((app) => app.id === id)) return prev;
-          return [
-            ...prev,
-            {
-              id,
-              title: name,
-              icon: '/system/folder.png',
-              disabled: true,
-              favourite: false,
-              desktop_shortcut: true,
-              isExternalApp: false,
-              url: '',
-              screen: () => <div className="p-4 text-white">📁 {name}</div>,
-            },
-          ];
-        });
-      });
-    }
+    if(!folders) return;
+
+    let parsed: { id: string; name: string }[] = [];
+    const addFolderToAppsList = (id: string, name: string) => {
+  setAppsList((prev) => {
+    const exists = prev.some((app) => app.id === id);
+    if (exists) return prev;
+
+    return [
+      ...prev,
+      {
+        id,
+        title: name,
+        icon: '/system/folder.png',
+        disabled: true,
+        favourite: false,
+        desktop_shortcut: true,
+        isExternalApp: false,
+        url: '',
+        screen: () => <FolderScreen name={name} />,
+      },
+    ];
+  });
+};
+
+
+    try {
+    parsed = JSON.parse(folders);
+  } catch (e) {
+    console.error('Invalid folder data in localStorage', e);
+    return;
+  }
+
+  parsed.forEach((folder) => addFolderToAppsList(folder.id, folder.name));
   }, []);
 
   useEffect(() => {
@@ -323,7 +345,7 @@ type DesktopScreenProps = {
   };
 
   return (
-    <div
+    <button
       className="relative w-full h-full overflow-hidden bg-cover bg-center transition-all duration-300"
       style={{ backgroundImage: `url(${resolvedBackground})` }}
       onContextMenu={handleContextMenu}
@@ -336,7 +358,7 @@ type DesktopScreenProps = {
         const rightOffset = 10 + column * 80;
 
         return (
-          <div
+          <button
             key={app.id}
             title={app.title}
             className="absolute text-white text-center cursor-pointer hover:bg-white/10 rounded-lg p-2 w-20 flex flex-col items-center"
@@ -371,7 +393,7 @@ type DesktopScreenProps = {
               className="w-9 h-9"
             />
             <p className="text-xs mt-1 truncate w-full">{app.title}</p>
-          </div>
+          </button>
         );
       })}
 
@@ -414,18 +436,18 @@ type DesktopScreenProps = {
             )}
           </div>
           <div className="flex">
-            <div
+            <button
               onClick={() => handleCreateFolder()}
               className="w-1/2 px-4 py-2 border border-gray-900 border-opacity-50 border-r-0 hover:bg-ub-warm-grey hover:bg-opacity-10 hover:border-opacity-50"
             >
               Create
-            </div>
-            <div
+            </button>
+            <button
               onClick={() => setShowNameBar(false)}
               className="w-1/2 px-4 py-2 border border-gray-900 border-opacity-50 hover:bg-ub-warm-grey hover:bg-opacity-10 hover:border-opacity-50"
             >
               Cancel
-            </div>
+            </button>
           </div>
         </div>
       )}
@@ -470,6 +492,6 @@ type DesktopScreenProps = {
         wallpaper={resolvedBackground}
         className={topOverlay === 'activities' ? 'z-[100]' : 'z-[99]'}
       />
-    </div>
+    </button>
   );
 };

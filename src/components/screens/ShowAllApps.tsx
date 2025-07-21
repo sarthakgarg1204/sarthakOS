@@ -16,7 +16,7 @@ type Props = {
   className?: string;
 };
 
-export default function ShowAllApps({ show, onClose, onLaunchApp, previewImage, className }: Props) {
+export default function ShowAllApps({ show, onClose, onLaunchApp, previewImage, className }: Readonly<Props>) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredApps = useMemo(() => {
@@ -62,7 +62,7 @@ export default function ShowAllApps({ show, onClose, onLaunchApp, previewImage, 
 
           {/* Desktop Preview Image */}
           {previewImage && (
-            <div
+            <button
               className="mx-auto mb-8 cursor-pointer w-fit"
               onClick={onClose}
             >
@@ -76,13 +76,14 @@ export default function ShowAllApps({ show, onClose, onLaunchApp, previewImage, 
                   priority
                 />
               </div>
-            </div>
+            </button>
           )}
 
           {/* App Grid */}
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-10 gap-y-8 max-w-[1100px] mx-auto px-4">
             {filteredApps.map((app) => (
-              <div
+              <button
+                type="button"
                 key={app.id}
                 className="flex flex-col items-center cursor-pointer hover:scale-105 transition"
                 onClick={() => {
@@ -98,7 +99,7 @@ export default function ShowAllApps({ show, onClose, onLaunchApp, previewImage, 
                   className="mb-2"
                 />
                 <span className="text-xs font-medium text-center">{app.title}</span>
-              </div>
+              </button>
             ))}
           </div>
         </div>

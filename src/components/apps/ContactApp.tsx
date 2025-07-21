@@ -116,7 +116,7 @@ export default function ContactApp() {
             <input
               ref={ref}
               placeholder={label}
-              type={type as any}
+              type={type as never}
               className={`pl-8 w-full py-2 rounded-md bg-white/70 dark:bg-black/20 border border-gray-400 focus:border-[#E95420] outline-none transition-all shadow-sm ${
                 error ? 'border-red-500 placeholder-red-400' : ''
               }`}

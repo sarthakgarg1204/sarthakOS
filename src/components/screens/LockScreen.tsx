@@ -11,7 +11,7 @@ interface LockScreenProps {
   bgImgName: string;
 }
 
-export default function LockScreen({ isLocked, unLockScreen, bgImgName }: LockScreenProps) {
+export default function LockScreen({ isLocked, unLockScreen, bgImgName }: Readonly<LockScreenProps>) {
   useEffect(() => {
     if (!isLocked) return;
 

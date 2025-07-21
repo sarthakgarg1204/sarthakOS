@@ -1,4 +1,6 @@
-import { ReactNode } from 'react';
+import { JSX } from 'react';
+
+type CustomWindowType = string & { _brand?: never };
 
 // Define all allowed window (app) types, matching `apps.config.ts`
 export type WindowType =
@@ -15,7 +17,7 @@ export type WindowType =
   | 'contact'
   | 'music-player'
   | 'video-player'
-  | string; // allow for future dynamic apps
+  | CustomWindowType;
 
 // Core window data shape
 export type WindowData = {
@@ -41,7 +43,7 @@ export type WindowData = {
   zIndex: number;
 
   // Function to render window screen content
-  screen: () => ReactNode;
+  screen: () => JSX.Element;
 
 
   prevPosition?: { x: number; y: number };

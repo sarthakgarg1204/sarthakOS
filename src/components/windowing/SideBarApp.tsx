@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 type Props = {
-  id: string;
   title: string;
   icon: string;
   isClose?: boolean;
@@ -23,7 +22,7 @@ export default function SideBarApp({
   isMinimized = false,
   isOpenInAnotherWorkspace = false,
   handleClick,
-}: Props) {
+}: Readonly<Props>) {
   const [hovered, setHovered] = useState(false);
 
   const showDot = !isClose || isOpenInAnotherWorkspace;
@@ -41,7 +40,9 @@ export default function SideBarApp({
 
   return (
     <div className="relative group mt-2">
-      <div
+      <button
+        tabIndex={0}
+        aria-label={title}
         className={cn(
           'w-10 h-10 flex items-center justify-center cursor-pointer rounded transition-all duration-150',
           (hovered || ((isFocus && !isMinimized) && !isOpenInAnotherWorkspace)) && 'bg-white/20 backdrop-blur-sm'
@@ -68,7 +69,7 @@ export default function SideBarApp({
           height={32}
           className="w-8 h-8 object-contain"
         />
-      </div>
+      </button>
     </div>
   );
 }

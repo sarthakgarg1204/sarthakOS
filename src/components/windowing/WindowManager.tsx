@@ -27,7 +27,7 @@ export default function WindowManager({
   onMaximizedStateChange,
   onWindowStateChange,
   onSidebarToggle,
-}: Props) {
+}: Readonly<Props>) {
   const [workspaces, setWorkspaces] = useState<WindowData[][]>(
     Array.from({ length: WORKSPACE_COUNT }, () => [])
   );
