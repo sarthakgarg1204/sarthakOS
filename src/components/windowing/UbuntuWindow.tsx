@@ -54,28 +54,20 @@ const UbuntuWindow: React.FC<UbuntuWindowProps> = ({
   // Handle maximize / restore
 
 useEffect(() => {
-  const maximizeWindow = () => {
-  previousPos.current = windowPos;
-  previousSize.current = windowSize;
+  if (isMaximized) {
+    previousPos.current = windowPos;
+    previousSize.current = windowSize;
   setWindowSize({
     width: window.innerWidth,
     height: window.innerHeight - navbarHeight,
   });
   setWindowPos({ x: 0, y: navbarHeight });
-};
-
-const restoreWindow = () => {
-  setWindowSize(previousSize.current);
-  setWindowPos(previousPos.current);
-};
-
-  if (isMaximized) {
-    maximizeWindow();
   } else {
-    restoreWindow();
+    setWindowSize(previousSize.current);
+  setWindowPos(previousPos.current);
   }
-}, [isMaximized, windowPos, windowSize]);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [isMaximized]);
 
   const minimizedStyle: React.CSSProperties  = isMinimized
     ? { opacity: 0, pointerEvents: "none", visibility: "hidden" }
