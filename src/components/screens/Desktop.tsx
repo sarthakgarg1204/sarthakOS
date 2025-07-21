@@ -270,6 +270,7 @@ type DesktopScreenProps = {
         position: { x: 0, y: 0 },
         size: { width: 0, height: 0 },
         zIndex: 0,
+        screen: app.screen || (() => <div className="text-white p-4">No screen defined for {app.title}</div>),
       };
 
       setWorkspaces((prev) =>
