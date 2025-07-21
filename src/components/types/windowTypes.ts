@@ -43,7 +43,7 @@ export type WindowData = {
   zIndex: number;
 
   // Function to render window screen content
-  screen: () => JSX.Element;
+  screen: () => React.ReactElement;
 
 
   prevPosition?: { x: number; y: number };

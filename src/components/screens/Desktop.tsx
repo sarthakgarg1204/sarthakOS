@@ -359,7 +359,7 @@ type DesktopScreenProps = {
         const rightOffset = 10 + column * 80;
 
         return (
-          <button
+          <div
             key={app.id}
             title={app.title}
             className="absolute text-white text-center cursor-pointer hover:bg-white/10 rounded-lg p-2 w-20 flex flex-col items-center"
@@ -394,7 +394,7 @@ type DesktopScreenProps = {
               className="w-9 h-9"
             />
             <p className="text-xs mt-1 truncate w-full">{app.title}</p>
-          </button>
+          </div>
         );
       })}
 

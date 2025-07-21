@@ -18,13 +18,15 @@ export const metadata = {
   description: "Portfolio OS",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {Object.values(wallpapers).map((url) => (
-          <link key={url} rel="preload" as="image" href={url} />
-        ))}
+        <link rel="preload" as="image" href={wallpapers["wall-14"]} />
+        {Object.entries(wallpapers).map(([key, url]) => {
+          if (key === "wall-14") return null;
+          return <link key={url} rel="preload" as="image" href={url} />;
+        })}
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${ubuntu.variable}`}>
         <Providers>

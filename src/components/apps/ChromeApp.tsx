@@ -224,7 +224,7 @@ const ChromeApp: React.FC = () => {
             ${i === currentTabIndex ? "bg-[#333333] shadow-inner" : "hover:bg-[#2a2a2a]"}`}
           >
             <div onClick={() => setCurrentTabIndex(i)} className="flex items-center gap-2">
-              <Image src={tab.favicon} width={16} height={16} alt="favicon" />
+              <Image src={tab.favicon} width={16} height={16} alt="" />
               <span className="truncate max-w-[120px]">{tab.display_url}</span>
             </div>
             <button

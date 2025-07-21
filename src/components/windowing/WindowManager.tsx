@@ -153,8 +153,8 @@ export default function WindowManager({
           return {
             ...w,
             isMaximized: true,
-            prevPosition: w.position,
-            prevSize: w.size,
+            prevPosition: w.prevPosition ?? w.position,
+            prevSize: w.prevSize ?? w.size,
             position: { x: 0, y: 0 },
             size: {
               width: window.innerWidth,
@@ -165,8 +165,8 @@ export default function WindowManager({
         return {
           ...w,
           isMaximized: false,
-          position: w.prevPosition ?? w.position,
-          size: w.prevSize ?? w.size,
+          position: w.prevPosition ?? { x: 120, y: 80 },
+          size: w.prevSize ?? { width: 900, height: 600 },
           prevPosition: undefined,
           prevSize: undefined,
         };

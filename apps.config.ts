@@ -1,6 +1,5 @@
 import type { WindowType } from '@/components/types/windowTypes';
 import dynamic from 'next/dynamic';
-import { JSX } from 'react';
 
 export type AppConfig = {
   id: WindowType;
@@ -10,7 +9,7 @@ export type AppConfig = {
   favourite?: boolean;
   desktop_shortcut?: boolean;
   isExternalApp?: boolean;
-  screen?: () => JSX.Element;
+  screen?: () => React.ReactElement;
   url?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component?: React.ComponentType<any>;

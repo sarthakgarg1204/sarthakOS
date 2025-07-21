@@ -47,11 +47,9 @@ const UbuntuWindow: React.FC<UbuntuWindowProps> = ({
 
   // Sync props → internal state on prop change
   useEffect(() => {
-    if (!isMaximized && !isMinimized) {
       setWindowSize(size);
       setWindowPos(position);
-    }
-  }, [size, position, isMaximized, isMinimized]);
+  }, [size, position]);
 
   // Handle maximize / restore
 
@@ -76,7 +74,7 @@ const restoreWindow = () => {
   } else {
     restoreWindow();
   }
-}, [isMaximized, windowPos, windowSize]);
+}, [isMaximized]);
 
 
   const minimizedStyle: React.CSSProperties  = isMinimized

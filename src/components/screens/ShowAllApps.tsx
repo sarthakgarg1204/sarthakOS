@@ -2,11 +2,11 @@
 
 import Navbar from '@/components/ui/Navbar'; // You must have this already
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
 import Image from 'next/image';
 import React, { useMemo, useState } from 'react';
 import apps from '../../../apps.config';
-import { motion } from 'framer-motion';
 
 type Props = {
   show: boolean;
@@ -74,6 +74,7 @@ export default function ShowAllApps({ show, onClose, onLaunchApp, previewImage, 
                   height={660}
                   className="w-full h-full object-cover"
                   priority
+                  loading="eager"
                 />
               </div>
             </button>
