@@ -81,7 +81,7 @@ useEffect(() => {
       disableDragging={isMaximized}
       minWidth={400}
       minHeight={300}
-      bounds="window"
+      bounds="#window-container"
       style={{ zIndex, position: "absolute", ...minimizedStyle }}
       onDragStop={(_, data) => {
         const newPos = { x: data.x, y: data.y };
