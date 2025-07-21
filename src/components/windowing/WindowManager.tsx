@@ -253,7 +253,7 @@ export default function WindowManager({
   }, [allWindows, onMaximizedStateChange, onSidebarToggle]);
 
   useEffect(() => {
-    const handlers: [string, (e: CustomEvent<WindowType | string>) => void][] = [
+    const handlers: [string, (e: CustomEvent<WindowType>) => void][] = [
       ['launchApp', (e) => openWindow(e.detail as WindowType)],
       ['restoreMinimized', (e) => restoreWindow(e.detail as string)],
       ['focusWindow', (e) => focusWindow(e.detail as string)],

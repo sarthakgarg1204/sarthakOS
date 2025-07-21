@@ -74,7 +74,7 @@ const restoreWindow = () => {
   } else {
     restoreWindow();
   }
-}, [isMaximized]);
+}, [isMaximized, windowPos, windowSize]);
 
 
   const minimizedStyle: React.CSSProperties  = isMinimized

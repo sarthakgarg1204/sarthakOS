@@ -1,4 +1,3 @@
-import { JSX } from 'react';
 
 type CustomWindowType = string & { _brand?: never };
 
