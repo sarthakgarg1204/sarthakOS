@@ -98,7 +98,7 @@ function MenuItem({
     <button
       onClick={disabled ? undefined : onClick}
       className={clsx(
-        'w-full px-3 py-1.5 rounded-sm transition',
+        'w-full px-3 py-1.5 rounded-sm text-left transition',
         disabled
           ? 'text-gray-400 cursor-not-allowed'
           : 'hover:bg-orange-500/10 hover:text-orange-500 cursor-pointer'
