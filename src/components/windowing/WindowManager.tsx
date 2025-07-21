@@ -32,25 +32,6 @@ export default function WindowManager({
     Array.from({ length: WORKSPACE_COUNT }, () => [])
   );
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [containerBounds, setContainerBounds] = useState({ width: 0, height: 0 });
-
-  // Detect actual bounds (for nested containers like Chrome)
-  useEffect(() => {
-    const updateBounds = () => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setContainerBounds({
-          width: rect.width,
-          height: rect.height,
-        });
-      }
-    };
-
-    updateBounds();
-    window.addEventListener('resize', updateBounds);
-    return () => window.removeEventListener('resize', updateBounds);
-  }, []);
 
   const zIndexCounter = useRef(2);
   const prevMaximizedRef = useRef<boolean | null>(null);
@@ -176,8 +157,8 @@ export default function WindowManager({
             prevSize: w.prevSize ?? w.size,
             position: { x: 0, y: 0 },
             size: {
-              width: containerBounds.width,
-              height: containerBounds.height,
+              width: window.innerWidth,
+              height: window.innerHeight,
             },
           };
         }
@@ -185,10 +166,7 @@ export default function WindowManager({
           ...w,
           isMaximized: false,
           position: w.prevPosition ?? { x: 120, y: 80 },
-          size: w.prevSize ?? {
-            width: Math.min(900, containerBounds.width - 40),
-            height: Math.min(600, containerBounds.height - 60),
-          },
+          size: w.prevSize ?? { width: 900, height: 600 },
           prevPosition: undefined,
           prevSize: undefined,
         };
@@ -238,9 +216,6 @@ export default function WindowManager({
         screen = () => <div className="p-4">Coming Soon</div>;
       }
 
-      const defaultWidth = Math.min(900, containerBounds.width - 40);
-      const defaultHeight = Math.min(600, containerBounds.height - 60);
-
       const newWindow: WindowData = {
         id,
         type,
@@ -249,14 +224,9 @@ export default function WindowManager({
         isFocused: true,
         isMinimized: false,
         isMaximized: false,
-        position: {
-          x: Math.max((containerBounds.width - defaultWidth) / 2, 10),
-          y: Math.max((containerBounds.height - defaultHeight) / 2, 10),
-        },
-        size: {
-          width: defaultWidth,
-          height: defaultHeight,
-        },
+
+        position: { x: 120, y: 80 },
+        size: { width: 900, height: 600 },
         zIndex: zIndexCounter.current++,
         screen,
       };
@@ -269,7 +239,7 @@ export default function WindowManager({
         return updated;
       });
     },
-    [workspaces, currentWorkspace, containerBounds]
+    [workspaces, currentWorkspace]
   );
 
   useEffect(() => {
@@ -304,7 +274,7 @@ export default function WindowManager({
   const currentWindows = workspaces[currentWorkspace] || [];
 
   return (
-    <div id="window-container" ref={containerRef} className="relative w-full h-full overflow-hidden">
+    <>
       {currentWindows.map((win) => (
         <div
           key={win.id}
@@ -324,6 +294,6 @@ export default function WindowManager({
           </UbuntuWindow>
         </div>
       ))}
-    </div>
+    </>
   );
 }
