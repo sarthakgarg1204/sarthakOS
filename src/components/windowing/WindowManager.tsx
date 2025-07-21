@@ -2,7 +2,7 @@
 
 import type { WindowData, WindowType } from '@/components/types/windowTypes';
 import UbuntuWindow from '@/components/windowing/UbuntuWindow';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { JSX, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import apps, { getAppConfigById } from '../../../apps.config';
 
 const WORKSPACE_COUNT = 4;
@@ -205,7 +205,7 @@ export default function WindowManager({
       if (!config) return;
 
       const id = `${type}-${Date.now()}`;
-      let screen: () => React.ReactNode;
+      let screen: () => JSX.Element;
 
       if (config.screen) {
         screen = config.screen;
