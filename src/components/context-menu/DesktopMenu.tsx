@@ -74,9 +74,9 @@ export default function DesktopMenu({
       darkClassName="bg-[#1a1a1a] text-white border border-white/10"
       style={{ top: `${position.y}px`, left: `${position.x}px` }}
     >
-      {menuItems.map((item) => {
+      {menuItems.map((item, i) => {
         if(item === 'divider') {
-          return <Divider key={item} />;
+          return <Divider key={i} />;
         } else {
             return <MenuItem key={item.label} {...item} />;
         }

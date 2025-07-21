@@ -52,33 +52,30 @@ export default function Navbar({ lockScreen, shutDown, openActivities }: Readonl
   return (
     <div className="main-navbar-vp absolute top-0 right-0 w-screen shadow-md flex justify-between items-center bg-ub-grey dark:bg-[#2e2e2e] text-ubt-grey text-sm select-none z-102">
       {/* Activities Button */}
-      <button
-        type="button"
+      <div
         tabIndex={0}
         onClick={() => openActivities?.()}
         className="flex items-center gap-2 pl-4 pr-3 py-2 outline-none"
       >
         <div className="w-8 h-2.5 bg-white rounded-full" />
         <div className="w-2.5 h-2.5 bg-white rounded-full" />
-      </button>
+      </div>
 
       {/* Clock with calendar dropdown */}
       <div ref={clockRef} className="relative">
-        <button
-          type="button"
+        <div
           tabIndex={0}
           onClick={() => setCalendarVisible((prev) => !prev)}
           className="pl-2 pr-2 py-1 text-xs md:text-sm border-b-2 border-transparent outline-none transition duration-100 ease-in-out focus:border-ubb-orange cursor-pointer"
         >
           <Clock />
-        </button>
+        </div>
         {calendarVisible && <CalendarPreview />}
       </div>
 
       {/* Status Section */}
       <div ref={statusWrapperRef} className="relative">
-        <button
-          type="button"
+        <div
           id="status-bar"
           tabIndex={0}
           onClick={handleStatusClick}
@@ -88,7 +85,7 @@ export default function Navbar({ lockScreen, shutDown, openActivities }: Readonl
             )}
         >
           <Status />
-        </button>
+        </div>
 
         <StatusCard
           lockScreen={lockScreen}

@@ -346,7 +346,7 @@ type DesktopScreenProps = {
   };
 
   return (
-    <button
+    <div
       className="relative w-full h-full overflow-hidden bg-cover bg-center transition-all duration-300"
       style={{ backgroundImage: `url(${resolvedBackground})` }}
       onContextMenu={handleContextMenu}
@@ -493,6 +493,6 @@ type DesktopScreenProps = {
         wallpaper={resolvedBackground}
         className={topOverlay === 'activities' ? 'z-[100]' : 'z-[99]'}
       />
-    </button>
+    </div>
   );
 };
