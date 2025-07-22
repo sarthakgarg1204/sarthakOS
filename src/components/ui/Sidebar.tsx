@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import SideBarApp from '@/components/windowing/SideBarApp';
-import Image from 'next/image';
-import { useState } from 'react';
-import appsConfig from '../../../apps.config'; // 👈 Use original config to get `favourite` flags
+import SideBarApp from "@/components/windowing/SideBarApp";
+import Image from "next/image";
+import { useState } from "react";
+import appsConfig from "../../../apps.config"; // 👈 Use original config to get `favourite` flags
 
 type App = {
   id: string;
@@ -60,7 +60,7 @@ export default function SideBar({
   return (
     <div
       className={`fixed top-5 left-0 h-full w-16 z-101 flex flex-col items-center justify-between bg-[rgba(0,0,0,0.6)] backdrop-blur-md pt-4 px-1 transition-all duration-500 ease-in-out ${
-        isMaximized ? '-translate-x-20 opacity-0' : 'translate-x-0 opacity-100'
+        isMaximized ? "-translate-x-20 opacity-0" : "translate-x-0 opacity-100"
       }`}
     >
       {/* App Icons */}
@@ -104,7 +104,7 @@ function ShowApplicationsButton({
     <button
       type="button"
       className={`w-10 h-10 m-1 rounded flex items-center justify-center relative cursor-pointer transition-all ${
-        isActive ? 'bg-white/20' : 'hover:bg-white/10'
+        isActive ? "bg-white/20" : "hover:bg-white/10"
       }`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -119,7 +119,7 @@ function ShowApplicationsButton({
       />
       <div
         className={`absolute left-full ml-3 top-1/2 -translate-y-1/2 whitespace-nowrap bg-black/80 text-white text-xs px-2 py-1 rounded-md shadow border border-gray-700 transition-opacity duration-150 ${
-          hovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          hovered ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
         Show Applications

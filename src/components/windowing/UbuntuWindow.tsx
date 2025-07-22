@@ -47,29 +47,29 @@ const UbuntuWindow: React.FC<UbuntuWindowProps> = ({
 
   // Sync props → internal state on prop change
   useEffect(() => {
-      setWindowSize(size);
-      setWindowPos(position);
+    setWindowSize(size);
+    setWindowPos(position);
   }, [size, position]);
 
   // Handle maximize / restore
 
-useEffect(() => {
-  if (isMaximized) {
-    previousPos.current = windowPos;
-    previousSize.current = windowSize;
-  setWindowSize({
-    width: window.innerWidth,
-    height: window.innerHeight - navbarHeight,
-  });
-  setWindowPos({ x: 0, y: navbarHeight });
-  } else {
-    setWindowSize(previousSize.current);
-  setWindowPos(previousPos.current);
-  }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [isMaximized]);
+  useEffect(() => {
+    if (isMaximized) {
+      previousPos.current = windowPos;
+      previousSize.current = windowSize;
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight - navbarHeight,
+      });
+      setWindowPos({ x: 0, y: navbarHeight });
+    } else {
+      setWindowSize(previousSize.current);
+      setWindowPos(previousPos.current);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMaximized]);
 
-  const minimizedStyle: React.CSSProperties  = isMinimized
+  const minimizedStyle: React.CSSProperties = isMinimized
     ? { opacity: 0, pointerEvents: "none", visibility: "hidden" }
     : {};
 
@@ -115,7 +115,7 @@ useEffect(() => {
       >
         {/* Title Bar */}
         <div className="window-drag-handle flex items-center justify-between px-3 py-2 rounded-md bg-ub-grey text-white select-none cursor-move">
-            <div className="w-[60px]" />
+          <div className="w-[60px]" />
           <div className="truncate text-sm font-medium pointer-events-none">
             {title}
           </div>
@@ -139,9 +139,7 @@ useEffect(() => {
         </div>
 
         {/* App Content */}
-        <div className="flex-grow overflow-hidden bg-black/10">
-          {children}
-        </div>
+        <div className="flex-grow overflow-hidden bg-black/10">{children}</div>
       </motion.div>
     </Rnd>
   );

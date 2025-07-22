@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import { useState } from 'react';
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { useState } from "react";
 
 type Props = {
   title: string;
@@ -27,15 +27,15 @@ export default function SideBarApp({
 
   const showDot = !isClose || isOpenInAnotherWorkspace;
 
-  let dotColorClass = '';
+  let dotColorClass = "";
   if (isOpenInAnotherWorkspace) {
-    dotColorClass = 'bg-gray-400 opacity-70';
+    dotColorClass = "bg-gray-400 opacity-70";
   } else if (isFocus && !isMinimized) {
-    dotColorClass = 'bg-orange-400 shadow-md';
+    dotColorClass = "bg-orange-400 shadow-md";
   } else if (!isClose && isMinimized) {
-    dotColorClass = 'bg-gray-400';
+    dotColorClass = "bg-gray-400";
   } else if (!isClose && !isFocus && !isMinimized) {
-    dotColorClass = 'bg-orange-400';
+    dotColorClass = "bg-orange-400";
   }
 
   return (
@@ -44,8 +44,9 @@ export default function SideBarApp({
         tabIndex={0}
         aria-label={title}
         className={cn(
-          'w-10 h-10 flex items-center justify-center cursor-pointer rounded transition-all duration-150',
-          (hovered || ((isFocus && !isMinimized) && !isOpenInAnotherWorkspace)) && 'bg-white/20 backdrop-blur-sm'
+          "w-10 h-10 flex items-center justify-center cursor-pointer rounded transition-all duration-150",
+          (hovered || (isFocus && !isMinimized && !isOpenInAnotherWorkspace)) &&
+            "bg-white/20 backdrop-blur-sm"
         )}
         onClick={handleClick}
         onMouseEnter={() => setHovered(true)}
@@ -55,7 +56,7 @@ export default function SideBarApp({
         {showDot && (
           <div
             className={cn(
-              'absolute -left-1.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full',
+              "absolute -left-1.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full",
               dotColorClass
             )}
           />

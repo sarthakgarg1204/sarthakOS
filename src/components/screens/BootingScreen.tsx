@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
 type BootingScreenProps = {
   visible: boolean;
@@ -8,14 +8,18 @@ type BootingScreenProps = {
   turnOn: () => void;
 };
 
-export default function BootingScreen({ visible, isShutDown, turnOn }: Readonly<BootingScreenProps>) {
+export default function BootingScreen({
+  visible,
+  isShutDown,
+  turnOn,
+}: Readonly<BootingScreenProps>) {
   const show = visible || isShutDown;
 
   return (
     <div
       style={{ zIndex: show ? 1000 : -20 }}
       className={`absolute top-0 right-0 w-screen h-screen flex flex-col justify-between items-center select-none overflow-hidden m-0 bg-ub-warm-grey p-0 transition-opacity duration-500 ${
-        show ? 'visible opacity-100' : 'invisible opacity-0'
+        show ? "visible opacity-100" : "invisible opacity-0"
       }`}
     >
       {/* Ubuntu Spinner / Power Logo */}
@@ -30,7 +34,7 @@ export default function BootingScreen({ visible, isShutDown, turnOn }: Readonly<
 
       {/* Power / Spinner Button */}
       <button
-      type="button"
+        type="button"
         className="w-10 h-10 flex justify-center items-center rounded-full outline-none cursor-pointer mb-6"
         onClick={turnOn}
       >
@@ -50,7 +54,7 @@ export default function BootingScreen({ visible, isShutDown, turnOn }: Readonly<
             height={40}
             src="/status/process-working-symbolic.svg"
             alt="Loading Spinner"
-            className={`w-10 ${visible ? 'animate-spin' : ''}`}
+            className={`w-10 ${visible ? "animate-spin" : ""}`}
           />
         )}
       </button>

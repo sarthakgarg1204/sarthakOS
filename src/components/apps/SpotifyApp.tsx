@@ -1,5 +1,5 @@
-'use client';
-import { useRef } from 'react';
+"use client";
+import { useRef } from "react";
 
 export default function SpotifyApp() {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);

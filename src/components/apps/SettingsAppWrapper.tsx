@@ -25,5 +25,10 @@ export default function SettingsAppWrapper() {
     window.dispatchEvent(new Event("changeBackground"));
   };
 
-  return <SettingsApp currBgImgName={bgName} changeBackgroundImage={updateBackground} />;
+  return (
+    <SettingsApp
+      currBgImgName={bgName}
+      changeBackgroundImage={updateBackground}
+    />
+  );
 }

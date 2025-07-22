@@ -33,7 +33,11 @@ export default function TerminalApp({ openApp, id }: TerminalAppProps) {
 
   useEffect(() => {
     const handleTerminalOutput = (e: Event) => {
-      const customEvent = e as CustomEvent<{ type: string; message: string; rowId: number }>;
+      const customEvent = e as CustomEvent<{
+        type: string;
+        message: string;
+        rowId: number;
+      }>;
       const { type, message, rowId } = customEvent.detail;
 
       setRows((prev) =>
@@ -54,11 +58,20 @@ export default function TerminalApp({ openApp, id }: TerminalAppProps) {
     };
 
     window.addEventListener("terminal-output", handleTerminalOutput);
-    return () => window.removeEventListener("terminal-output", handleTerminalOutput);
+    return () =>
+      window.removeEventListener("terminal-output", handleTerminalOutput);
   }, []);
 
   const childDirectories: DirectoryMap = {
-    root: ["books", "projects", "personal-documents", "skills", "languages", "PDPU", "interests"],
+    root: [
+      "books",
+      "projects",
+      "personal-documents",
+      "skills",
+      "languages",
+      "PDPU",
+      "interests",
+    ],
     PDPU: ["Sem-6"],
     books: [
       "Eric-Jorgenson_The-Almanack-of-Naval-Ravikant.pdf",
@@ -66,7 +79,15 @@ export default function TerminalApp({ openApp, id }: TerminalAppProps) {
       "The $100 Startup_CHRIS_GUILLEBEAU.pdf",
       "The_Magic_of_Thinking_Big.pdf",
     ],
-    skills: ["Front-end development", "React.js", "jQuery", "Flutter", "Express.js", "SQL", "Firebase"],
+    skills: [
+      "Front-end development",
+      "React.js",
+      "jQuery",
+      "Flutter",
+      "Express.js",
+      "SQL",
+      "Firebase",
+    ],
     projects: [
       "vivek9patel-personal-portfolio",
       "synonyms-list-react",
@@ -105,7 +126,8 @@ export default function TerminalApp({ openApp, id }: TerminalAppProps) {
     const args = parts.slice(1);
     let result: string | JSX.Element = "";
 
-    const segments = currentDir === "~" ? ["root"] : currentDir.split("/").filter(Boolean);
+    const segments =
+      currentDir === "~" ? ["root"] : currentDir.split("/").filter(Boolean);
     const currentDirKey = segments.at(-1) || "root";
 
     switch (main) {
@@ -120,7 +142,8 @@ export default function TerminalApp({ openApp, id }: TerminalAppProps) {
         if (target === "..") {
           if (currentDir !== "~") {
             segments.pop();
-            const newDir = segments.length === 0 ? "~" : "/" + segments.join("/");
+            const newDir =
+              segments.length === 0 ? "~" : "/" + segments.join("/");
             const newDirName = segments.at(-1) || "root";
             setCurrentDir(newDir);
             setDirName(newDirName);
@@ -149,7 +172,9 @@ export default function TerminalApp({ openApp, id }: TerminalAppProps) {
           result = (
             <div className="flex flex-wrap gap-2">
               {childDirectories[targetDir].map((file, i) => (
-                <span key={i} className="text-ubt-blue font-bold">&apos;{file}</span>
+                <span key={i} className="text-ubt-blue font-bold">
+                  &apos;{file}
+                </span>
               ))}
             </div>
           );
@@ -223,7 +248,7 @@ export default function TerminalApp({ openApp, id }: TerminalAppProps) {
         ]);
         setInputValue("");
         setTimeout(() => {
-          window.dispatchEvent(new CustomEvent('closeWindow', { detail: id }));
+          window.dispatchEvent(new CustomEvent("closeWindow", { detail: id }));
         }, 1000);
         return;
 
@@ -267,7 +292,10 @@ export default function TerminalApp({ openApp, id }: TerminalAppProps) {
 
     setInputValue("");
     setTimeout(() => {
-      terminalRef.current?.scrollTo({ top: terminalRef.current.scrollHeight, behavior: "smooth" });
+      terminalRef.current?.scrollTo({
+        top: terminalRef.current.scrollHeight,
+        behavior: "smooth",
+      });
     }, 0);
   };
 

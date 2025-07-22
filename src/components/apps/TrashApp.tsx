@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import ThemedBox from '@/components/ui/ThemedBox';
-import { RotateCcw, Trash2 } from 'lucide-react';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import ThemedBox from "@/components/ui/ThemedBox";
+import { RotateCcw, Trash2 } from "lucide-react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 
 type TrashItem = {
   name: string;
@@ -11,26 +11,26 @@ type TrashItem = {
 };
 
 const initialTrashItems: TrashItem[] = [
-  { name: 'php', icon: '/filetypes/php.png' },
-  { name: 'Angular.js', icon: '/filetypes/js.png' },
-  { name: 'node_modules', icon: '/system/folder.png' },
-  { name: 'abandoned project', icon: '/system/folder.png' },
-  { name: '18BCP127 assignment name.zip', icon: '/filetypes/zip.png' },
-  { name: 'project final', icon: '/system/folder.png' },
-  { name: 'project ultra-final', icon: '/system/folder.png' },
+  { name: "php", icon: "/filetypes/php.png" },
+  { name: "Angular.js", icon: "/filetypes/js.png" },
+  { name: "node_modules", icon: "/system/folder.png" },
+  { name: "abandoned project", icon: "/system/folder.png" },
+  { name: "18BCP127 assignment name.zip", icon: "/filetypes/zip.png" },
+  { name: "project final", icon: "/system/folder.png" },
+  { name: "project ultra-final", icon: "/system/folder.png" },
 ];
 
 export default function TrashApp() {
   const [isEmpty, setIsEmpty] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem('trash-empty');
-    if (stored === 'true') setIsEmpty(true);
+    const stored = localStorage.getItem("trash-empty");
+    if (stored === "true") setIsEmpty(true);
   }, []);
 
   const emptyTrash = () => {
     setIsEmpty(true);
-    localStorage.setItem('trash-empty', 'true');
+    localStorage.setItem("trash-empty", "true");
   };
 
   const EmptyView = () => (
@@ -53,7 +53,7 @@ export default function TrashApp() {
           key={index}
           tabIndex={0}
           className="group relative max-w-[96px] w-full mx-auto flex flex-col items-center justify-start rounded-md p-2 transition-all duration-100 hover:bg-[#E95420]/20 hover:ring-1 hover:ring-[#E95420] hover:shadow-sm focus:bg-[#E95420]/20 focus:ring-1 focus:ring-[#E95420] focus:shadow-sm"
-          style={{ overflow: 'visible' }}
+          style={{ overflow: "visible" }}
         >
           <Image
             src={item.icon}
