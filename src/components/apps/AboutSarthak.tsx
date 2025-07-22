@@ -10,7 +10,7 @@ import {
     User
 } from 'lucide-react';
 import Image from 'next/image';
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 
 type Section = 'about' | 'education' | 'skills' | 'projects' | 'resume';
 
