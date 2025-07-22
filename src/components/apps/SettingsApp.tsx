@@ -9,7 +9,10 @@ type Props = {
   changeBackgroundImage: (name: string) => void;
 };
 
-export default function SettingsApp({ currBgImgName, changeBackgroundImage }: Props) {
+export default function SettingsApp({
+  currBgImgName,
+  changeBackgroundImage,
+}: Props) {
   const handleChange = (name: string) => {
     changeBackgroundImage(name);
   };

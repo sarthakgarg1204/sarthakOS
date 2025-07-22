@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import ThemedBox from '@/components/ui/ThemedBox';
-import useMounted from '@/hooks/useMounted';
-import clsx from 'clsx';
-import { useEffect, useState } from 'react';
+import ThemedBox from "@/components/ui/ThemedBox";
+import useMounted from "@/hooks/useMounted";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
 
 type Props = {
   active: boolean;
@@ -18,7 +18,7 @@ type MenuItemObject = {
   disabled?: boolean;
 };
 
-type MenuItemType = MenuItemObject | 'divider';
+type MenuItemType = MenuItemObject | "divider";
 
 export default function DesktopMenu({
   active,
@@ -30,8 +30,9 @@ export default function DesktopMenu({
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   useEffect(() => {
-    document.addEventListener('fullscreenchange', checkFullScreen);
-    return () => document.removeEventListener('fullscreenchange', checkFullScreen);
+    document.addEventListener("fullscreenchange", checkFullScreen);
+    return () =>
+      document.removeEventListener("fullscreenchange", checkFullScreen);
   }, []);
 
   const checkFullScreen = () => {
@@ -44,20 +45,22 @@ export default function DesktopMenu({
   };
 
   const menuItems: MenuItemType[] = [
-    { label: 'New Folder', onClick: addNewFolder },
-    'divider',
-    { label: 'Paste', disabled: true },
-    'divider',
-    { label: 'Show Desktop in Files', disabled: true },
-    { label: 'Open in Terminal', onClick: () => openApp('terminal') },
-    'divider',
-    { label: 'Change Background…', onClick: () => openApp('settings') },
-    'divider',
-    { label: 'Display Settings', disabled: true },
-    { label: 'Settings', onClick: () => openApp('settings') },
-    'divider',
+    { label: "New Folder", onClick: addNewFolder },
+    "divider",
+    { label: "Paste", disabled: true },
+    "divider",
+    { label: "Show Desktop in Files", disabled: true },
+    { label: "Open in Terminal", onClick: () => openApp("terminal") },
+    "divider",
+    { label: "Change Background…", onClick: () => openApp("settings") },
+    "divider",
+    { label: "Display Settings", disabled: true },
+    { label: "Settings", onClick: () => openApp("settings") },
+    "divider",
     {
-      label: `${isFullScreen ? 'Exit Full Screen Mode' : 'Enter Full Screen Mode'}`,
+      label: `${
+        isFullScreen ? "Exit Full Screen Mode" : "Enter Full Screen Mode"
+      }`,
       onClick: toggleFullScreen,
     },
   ];
@@ -67,18 +70,18 @@ export default function DesktopMenu({
   return (
     <ThemedBox
       className={clsx(
-        'absolute z-50 w-56 rounded-md py-2 font-normal text-[13px] leading-5 shadow-lg transition-all',
-        'font-[Ubuntu, sans-serif]'
+        "absolute z-50 w-56 rounded-md py-2 font-normal text-[13px] leading-5 shadow-lg transition-all",
+        "font-[Ubuntu, sans-serif]"
       )}
       lightClassName="bg-white text-black border border-gray-300"
       darkClassName="bg-[#1a1a1a] text-white border border-white/10"
       style={{ top: `${position.y}px`, left: `${position.x}px` }}
     >
       {menuItems.map((item, i) => {
-        if(item === 'divider') {
+        if (item === "divider") {
           return <Divider key={i} />;
         } else {
-            return <MenuItem key={item.label} {...item} />;
+          return <MenuItem key={item.label} {...item} />;
         }
       })}
     </ThemedBox>
@@ -98,10 +101,10 @@ function MenuItem({
     <button
       onClick={disabled ? undefined : onClick}
       className={clsx(
-        'w-full px-3 py-1.5 rounded-sm text-left transition',
+        "w-full px-3 py-1.5 rounded-sm text-left transition",
         disabled
-          ? 'text-gray-400 cursor-not-allowed'
-          : 'hover:bg-orange-500/10 hover:text-orange-500 cursor-pointer'
+          ? "text-gray-400 cursor-not-allowed"
+          : "hover:bg-orange-500/10 hover:text-orange-500 cursor-pointer"
       )}
     >
       <span className="pl-5">{label}</span>

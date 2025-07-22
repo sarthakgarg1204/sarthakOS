@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Clock from '@/components/util-components/Clock';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect } from 'react';
-import wallpapers from '../../../wallpaper.config';
+import Clock from "@/components/util-components/Clock";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
+import wallpapers from "../../../wallpaper.config";
 
 interface LockScreenProps {
   isLocked: boolean;
@@ -11,24 +11,28 @@ interface LockScreenProps {
   bgImgName: string;
 }
 
-export default function LockScreen({ isLocked, unLockScreen, bgImgName }: Readonly<LockScreenProps>) {
+export default function LockScreen({
+  isLocked,
+  unLockScreen,
+  bgImgName,
+}: Readonly<LockScreenProps>) {
   useEffect(() => {
     if (!isLocked) return;
 
     const handleUnlock = () => {
       unLockScreen();
-      window.removeEventListener('click', handleUnlock);
-      window.removeEventListener('keypress', handleUnlock);
+      window.removeEventListener("click", handleUnlock);
+      window.removeEventListener("keypress", handleUnlock);
     };
 
     setTimeout(() => {
-      window.addEventListener('click', handleUnlock);
-      window.addEventListener('keypress', handleUnlock);
+      window.addEventListener("click", handleUnlock);
+      window.addEventListener("keypress", handleUnlock);
     }, 100); // Prevents triggering on initial lock
 
     return () => {
-      window.removeEventListener('click', handleUnlock);
-      window.removeEventListener('keypress', handleUnlock);
+      window.removeEventListener("click", handleUnlock);
+      window.removeEventListener("keypress", handleUnlock);
     };
   }, [isLocked, unLockScreen]);
 
@@ -40,14 +44,14 @@ export default function LockScreen({ isLocked, unLockScreen, bgImgName }: Readon
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 1.02 }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
         >
           <div
             className="absolute inset-0 blur-md"
             style={{
               backgroundImage: `url(${wallpapers[bgImgName]})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
           />
           <div className="absolute inset-0 bg-black/60 z-10 flex flex-col items-center justify-center">

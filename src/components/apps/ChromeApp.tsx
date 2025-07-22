@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -61,7 +61,10 @@ const generateTabUpdate = (input: string, currentTab: Tab): Tab => {
     url: parsedUrl,
     display_url,
     favicon: extractFavicon(parsedUrl),
-    history: [...currentTab.history.slice(0, currentTab.historyIndex + 1), parsedUrl],
+    history: [
+      ...currentTab.history.slice(0, currentTab.historyIndex + 1),
+      parsedUrl,
+    ],
     historyIndex: currentTab.historyIndex + 1,
   };
 };
@@ -202,7 +205,10 @@ const ChromeApp: React.FC = () => {
         url: newUrl,
         display_url,
         favicon,
-        history: [...currentTab.history.slice(0, currentTab.historyIndex + 1), newUrl],
+        history: [
+          ...currentTab.history.slice(0, currentTab.historyIndex + 1),
+          newUrl,
+        ],
         historyIndex: currentTab.historyIndex + 1,
       };
 
@@ -221,9 +227,16 @@ const ChromeApp: React.FC = () => {
           <div
             key={i}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-t-md cursor-pointer transition-all relative
-            ${i === currentTabIndex ? "bg-[#333333] shadow-inner" : "hover:bg-[#2a2a2a]"}`}
+            ${
+              i === currentTabIndex
+                ? "bg-[#333333] shadow-inner"
+                : "hover:bg-[#2a2a2a]"
+            }`}
           >
-            <div onClick={() => setCurrentTabIndex(i)} className="flex items-center gap-2">
+            <div
+              onClick={() => setCurrentTabIndex(i)}
+              className="flex items-center gap-2"
+            >
               <Image src={tab.favicon} width={16} height={16} alt="" />
               <span className="truncate max-w-[120px]">{tab.display_url}</span>
             </div>
@@ -236,17 +249,35 @@ const ChromeApp: React.FC = () => {
             </button>
           </div>
         ))}
-        <button onClick={addNewTab} className="text-green-400 px-2">+</button>
+        <button onClick={addNewTab} className="text-green-400 px-2">
+          +
+        </button>
       </div>
-
-
 
       {/* Address Bar */}
       <div className="flex items-center gap-2 px-3 py-2 bg-[#252525] border-b border-gray-700">
-        <button onClick={goBack}><ArrowLeft size={16} /></button>
-        <button onClick={goForward} ><ArrowRight size={16} /></button>
-        <button onClick={refreshPage}><Image src="/status/chrome_refresh.svg" width={16} height={16} alt="Refresh" /></button>
-        <button onClick={goHome}><Image src="/status/chrome_home.svg" width={16} height={16} alt="Home" /></button>
+        <button onClick={goBack}>
+          <ArrowLeft size={16} />
+        </button>
+        <button onClick={goForward}>
+          <ArrowRight size={16} />
+        </button>
+        <button onClick={refreshPage}>
+          <Image
+            src="/status/chrome_refresh.svg"
+            width={16}
+            height={16}
+            alt="Refresh"
+          />
+        </button>
+        <button onClick={goHome}>
+          <Image
+            src="/status/chrome_home.svg"
+            width={16}
+            height={16}
+            alt="Home"
+          />
+        </button>
         <Image src={currentTab.favicon} width={16} height={16} alt="icon" />
         <input
           value={urlInput}

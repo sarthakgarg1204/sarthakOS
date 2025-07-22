@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import ThemedBox from '@/components/ui/ThemedBox';
-import clsx from 'clsx';
-import { Plus, Search, Trash2 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import ThemedBox from "@/components/ui/ThemedBox";
+import clsx from "clsx";
+import { Plus, Search, Trash2 } from "lucide-react";
+import { useEffect, useState } from "react";
 
 type Todo = {
   id: number;
@@ -11,28 +11,28 @@ type Todo = {
   completed: boolean;
 };
 
-type FilterType = 'all' | 'active' | 'completed';
+type FilterType = "all" | "active" | "completed";
 
 export default function TodoApp() {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [initialized, setInitialized] = useState(false);
-  const [filter, setFilter] = useState<FilterType>('all');
-  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState<FilterType>("all");
+  const [search, setSearch] = useState("");
 
   // separate error states
   const [emptyError, setEmptyError] = useState(false);
   const [duplicateError, setDuplicateError] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem('ubuntu-todo-list');
+    const saved = localStorage.getItem("ubuntu-todo-list");
     if (saved) setTodos(JSON.parse(saved));
     setInitialized(true);
   }, []);
 
   useEffect(() => {
     if (initialized) {
-      localStorage.setItem('ubuntu-todo-list', JSON.stringify(todos));
+      localStorage.setItem("ubuntu-todo-list", JSON.stringify(todos));
     }
   }, [todos, initialized]);
 
@@ -63,7 +63,7 @@ export default function TodoApp() {
     };
 
     setTodos([newTodo, ...todos]);
-    setInput('');
+    setInput("");
   };
 
   const toggleTodo = (id: number) => {
@@ -80,8 +80,8 @@ export default function TodoApp() {
 
   const filteredTodos = todos
     .filter((todo) => {
-      if (filter === 'active') return !todo.completed;
-      if (filter === 'completed') return todo.completed;
+      if (filter === "active") return !todo.completed;
+      if (filter === "completed") return todo.completed;
       return true;
     })
     .filter((todo) =>
@@ -105,20 +105,20 @@ export default function TodoApp() {
               setEmptyError(false);
               setDuplicateError(false);
             }}
-            onKeyDown={(e) => e.key === 'Enter' && addTodo()}
+            onKeyDown={(e) => e.key === "Enter" && addTodo()}
             placeholder={
               emptyError
-                ? 'Task name is required'
+                ? "Task name is required"
                 : duplicateError
-                ? 'Task already exists'
-                : 'Add new task…'
+                ? "Task already exists"
+                : "Add new task…"
             }
             className={clsx(
-              'flex-grow text-sm px-3 py-1.5 rounded-md outline-none transition-all',
-              'bg-white/60 dark:bg-black/30 border border-gray-500 dark:placeholder-gray-500',
-              (emptyError || duplicateError)
-                ? 'ring-1 ring-red-500 border border-red-500 animate-shake'
-                : 'focus:ring-1 ring-[#E95420] border border-transparent'
+              "flex-grow text-sm px-3 py-1.5 rounded-md outline-none transition-all",
+              "bg-white/60 dark:bg-black/30 border border-gray-500 dark:placeholder-gray-500",
+              emptyError || duplicateError
+                ? "ring-1 ring-red-500 border border-red-500 animate-shake"
+                : "focus:ring-1 ring-[#E95420] border border-transparent"
             )}
           />
           <button
@@ -143,15 +143,15 @@ export default function TodoApp() {
 
       {/* Filters */}
       <div className="flex gap-2 mb-3 text-sm font-medium text-gray-500 dark:text-gray-300">
-        {(['all', 'active', 'completed'] as FilterType[]).map((f) => (
+        {(["all", "active", "completed"] as FilterType[]).map((f) => (
           <button
             key={f}
             onClick={() => setFilter(f)}
             className={clsx(
-              'px-3 py-1 rounded-md transition capitalize',
+              "px-3 py-1 rounded-md transition capitalize",
               filter === f
-                ? 'bg-[#E95420] text-white'
-                : 'hover:bg-black/10 dark:hover:bg-white/10'
+                ? "bg-[#E95420] text-white"
+                : "hover:bg-black/10 dark:hover:bg-white/10"
             )}
           >
             {f}
@@ -162,7 +162,9 @@ export default function TodoApp() {
       {/* Todo List */}
       <div className="flex-grow overflow-y-auto space-y-2 pr-1 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent">
         {filteredTodos.length === 0 ? (
-          <p className="text-center text-sm text-gray-400 mt-10">No tasks found</p>
+          <p className="text-center text-sm text-gray-400 mt-10">
+            No tasks found
+          </p>
         ) : (
           filteredTodos.map((todo) => (
             <div
@@ -173,10 +175,10 @@ export default function TodoApp() {
               <button
                 onClick={() => toggleTodo(todo.id)}
                 className={clsx(
-                  'w-4 h-4 min-w-4 rounded-full border-2 flex items-center justify-center transition',
+                  "w-4 h-4 min-w-4 rounded-full border-2 flex items-center justify-center transition",
                   todo.completed
-                    ? 'border-[#E95420] bg-[#E95420]'
-                    : 'border-gray-400 dark:border-gray-500'
+                    ? "border-[#E95420] bg-[#E95420]"
+                    : "border-gray-400 dark:border-gray-500"
                 )}
               >
                 {todo.completed && (
@@ -186,8 +188,9 @@ export default function TodoApp() {
 
               <span
                 className={clsx(
-                  'flex-grow text-sm ml-3',
-                  todo.completed && 'line-through text-gray-500 dark:text-gray-400'
+                  "flex-grow text-sm ml-3",
+                  todo.completed &&
+                    "line-through text-gray-500 dark:text-gray-400"
                 )}
               >
                 {todo.text}

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import ThemedBox from '@/components/ui/ThemedBox';
-import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
+import ThemedBox from "@/components/ui/ThemedBox";
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   active: boolean;
@@ -10,7 +10,11 @@ type Props = {
   onReset?: () => void;
 };
 
-export default function DefaultMenu({ active, position, onReset }: Readonly<Props>) {
+export default function DefaultMenu({
+  active,
+  position,
+  onReset,
+}: Readonly<Props>) {
   const [menuPos, setMenuPos] = useState(position);
 
   useEffect(() => {
@@ -41,8 +45,8 @@ export default function DefaultMenu({ active, position, onReset }: Readonly<Prop
   return (
     <ThemedBox
       className={clsx(
-        'absolute z-50 w-52 py-3 px-1 rounded-[8px] shadow-xl font-ubuntu text-sm select-none',
-        'transition-opacity duration-200 border backdrop-blur-md'
+        "absolute z-50 w-52 py-3 px-1 rounded-[8px] shadow-xl font-ubuntu text-sm select-none",
+        "transition-opacity duration-200 border backdrop-blur-md"
       )}
       lightClassName="bg-white/80 text-black border-gray-300"
       darkClassName="bg-[#1c1c1c]/90 text-white border-zinc-800"
@@ -87,8 +91,8 @@ export default function DefaultMenu({ active, position, onReset }: Readonly<Prop
           }
         }}
         className={clsx(
-          'flex items-center gap-2 px-4 py-[6px] rounded-sm',
-          'cursor-pointer hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors duration-150'
+          "flex items-center gap-2 px-4 py-[6px] rounded-sm",
+          "cursor-pointer hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors duration-150"
         )}
       >
         <span>🧹</span>
@@ -113,8 +117,8 @@ function MenuLink({
       target="_blank"
       rel="noreferrer noopener"
       className={clsx(
-        'flex items-center gap-2 px-4 py-[6px] rounded-sm',
-        'hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors duration-150'
+        "flex items-center gap-2 px-4 py-[6px] rounded-sm",
+        "hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors duration-150"
       )}
     >
       <span>{icon}</span>

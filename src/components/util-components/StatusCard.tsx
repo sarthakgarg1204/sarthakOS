@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import ThemedBox from '@/components/ui/ThemedBox';
-import useMounted from '@/hooks/useMounted';
-import clsx from 'clsx';
-import { useTheme } from 'next-themes';
-import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import ThemedBox from "@/components/ui/ThemedBox";
+import useMounted from "@/hooks/useMounted";
+import clsx from "clsx";
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 type StatusCardProps = {
   visible: boolean;
@@ -22,7 +22,11 @@ interface StatusItem {
   onClick?: () => void;
 }
 
-export default function StatusCard({ visible, shutDown, lockScreen }: Readonly<StatusCardProps>) {
+export default function StatusCard({
+  visible,
+  shutDown,
+  lockScreen,
+}: Readonly<StatusCardProps>) {
   const [soundLevel, setSoundLevel] = useState(75);
   const [brightnessLevel, setBrightnessLevel] = useState(100);
   const { resolvedTheme, setTheme } = useTheme();
@@ -30,66 +34,102 @@ export default function StatusCard({ visible, shutDown, lockScreen }: Readonly<S
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const sound = Number(localStorage.getItem('sound-level') || '75');
-    const brightness = Number(localStorage.getItem('brightness-level') || '100');
+    const sound = Number(localStorage.getItem("sound-level") || "75");
+    const brightness = Number(
+      localStorage.getItem("brightness-level") || "100"
+    );
     setSoundLevel(sound);
     setBrightnessLevel(brightness);
-    const screen = document.getElementById('monitor-screen');
-    if (screen) screen.style.filter = `brightness(${(3 / 400) * brightness + 0.25})`;
+    const screen = document.getElementById("monitor-screen");
+    if (screen)
+      screen.style.filter = `brightness(${(3 / 400) * brightness + 0.25})`;
   }, []);
 
   const handleSound = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = Number(e.target.value);
     setSoundLevel(val);
-    localStorage.setItem('sound-level', val.toString());
+    localStorage.setItem("sound-level", val.toString());
   };
 
   const handleBrightness = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = Number(e.target.value);
     setBrightnessLevel(val);
-    localStorage.setItem('brightness-level', val.toString());
-    const screen = document.getElementById('monitor-screen');
+    localStorage.setItem("brightness-level", val.toString());
+    const screen = document.getElementById("monitor-screen");
     if (screen) screen.style.filter = `brightness(${(3 / 400) * val + 0.25})`;
   };
 
   const handleItemClick = (label: string) => {
-    if (label === 'Dark Style') {
-      setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+    if (label === "Dark Style") {
+      setTheme(resolvedTheme === "dark" ? "light" : "dark");
     }
   };
 
   const openApp = (appId: string) => {
-    const event = new CustomEvent('launchApp', { detail: appId });
+    const event = new CustomEvent("launchApp", { detail: appId });
     window.dispatchEvent(event);
   };
 
   const topActions = [
-    { icon: 'emblem-system-symbolic', label: 'Settings', onClick: () => openApp('settings') },
-    { icon: 'changes-prevent-symbolic', label: 'Lock Screen', onClick: lockScreen },
-    { icon: 'system-shutdown-symbolic', label: 'Power', onClick: shutDown },
+    {
+      icon: "emblem-system-symbolic",
+      label: "Settings",
+      onClick: () => openApp("settings"),
+    },
+    {
+      icon: "changes-prevent-symbolic",
+      label: "Lock Screen",
+      onClick: lockScreen,
+    },
+    { icon: "system-shutdown-symbolic", label: "Power", onClick: shutDown },
   ];
 
   const items: StatusItem[] = [
-    { icon: 'network-wireless-signal-good-symbolic', label: 'Wi-Fi', sub: 'sarthak', active: true, arrow: true },
-    { icon: 'bluetooth-symbolic', label: 'Bluetooth',sub: 'On', active: true, arrow: true },
-    { icon: 'power-profile-balanced-symbolic', label: 'Power Mode', sub: 'Balanced', active: false, arrow: true },
-    { icon: 'weather-clear-night-symbolic', label: 'Night Light', active: false },
-    { icon: 'preferences-desktop-theme-symbolic', label: 'Dark Style',
-    onClick: () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'), },
-    { icon: 'airplane-mode-symbolic', label: 'Airplane Mode', active: false },
+    {
+      icon: "network-wireless-signal-good-symbolic",
+      label: "Wi-Fi",
+      sub: "sarthak",
+      active: true,
+      arrow: true,
+    },
+    {
+      icon: "bluetooth-symbolic",
+      label: "Bluetooth",
+      sub: "On",
+      active: true,
+      arrow: true,
+    },
+    {
+      icon: "power-profile-balanced-symbolic",
+      label: "Power Mode",
+      sub: "Balanced",
+      active: false,
+      arrow: true,
+    },
+    {
+      icon: "weather-clear-night-symbolic",
+      label: "Night Light",
+      active: false,
+    },
+    {
+      icon: "preferences-desktop-theme-symbolic",
+      label: "Dark Style",
+      onClick: () => setTheme(resolvedTheme === "dark" ? "light" : "dark"),
+    },
+    { icon: "airplane-mode-symbolic", label: "Airplane Mode", active: false },
   ];
 
   // For inactive status items
-const getInactiveIconSrc = (name: string) => {
-  return resolvedTheme === 'light'
-    ? `/status/${name}-dark.svg`
-    : `/status/${name}.svg`;
-};
+  const getInactiveIconSrc = (name: string) => {
+    return resolvedTheme === "light"
+      ? `/status/${name}-dark.svg`
+      : `/status/${name}.svg`;
+  };
 
-// For active status items
-const getActiveIconSrc = (name: string) => {
-  return `/status/${name}.svg`; // always same for active
-};
+  // For active status items
+  const getActiveIconSrc = (name: string) => {
+    return `/status/${name}.svg`; // always same for active
+  };
 
   if (!mounted) return null;
 
@@ -97,8 +137,10 @@ const getActiveIconSrc = (name: string) => {
     <div ref={wrapperRef}>
       <ThemedBox
         className={clsx(
-          'absolute top-9 right-3 w-[360px] z-[1000] rounded-2xl p-4 backdrop-blur-md shadow-xl border transition-all duration-300',
-          visible ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'
+          "absolute top-9 right-3 w-[360px] z-[1000] rounded-2xl p-4 backdrop-blur-md shadow-xl border transition-all duration-300",
+          visible
+            ? "opacity-100 scale-100 pointer-events-auto"
+            : "opacity-0 scale-95 pointer-events-none"
         )}
         lightClassName="bg-[#f7f7f7] border-[#d0d0d0] text-[#1a1a1a]"
         darkClassName="bg-[#1c1c1c] border-white/20 text-white"
@@ -106,17 +148,24 @@ const getActiveIconSrc = (name: string) => {
         {/* Arrow */}
         <div
           className={clsx(
-            'absolute w-0 h-0 -top-2 right-6 border-l-8 border-r-8 border-b-8 border-transparent',
-            resolvedTheme === 'dark' ? 'border-b-[#1c1c1c]' : 'border-b-[#f7f7f7]'
+            "absolute w-0 h-0 -top-2 right-6 border-l-8 border-r-8 border-b-8 border-transparent",
+            resolvedTheme === "dark"
+              ? "border-b-[#1c1c1c]"
+              : "border-b-[#f7f7f7]"
           )}
-          style={{ boxShadow: resolvedTheme === 'light' ? '0 1px 4px rgba(0, 0, 0, 0.08)' : undefined }}
+          style={{
+            boxShadow:
+              resolvedTheme === "light"
+                ? "0 1px 4px rgba(0, 0, 0, 0.08)"
+                : undefined,
+          }}
         />
 
         {/* Top Row */}
         <div className="flex justify-between items-center mb-4 px-1">
           <div className="flex items-center gap-2 text-sm font-medium">
             <Image
-              src={getInactiveIconSrc('battery-good-symbolic')}
+              src={getInactiveIconSrc("battery-good-symbolic")}
               alt="Battery"
               width={20}
               height={20}
@@ -130,10 +179,10 @@ const getActiveIconSrc = (name: string) => {
                 key={btn.label}
                 onClick={btn.onClick}
                 className={clsx(
-                  'w-9 h-9 flex items-center justify-center rounded-full border transition-colors duration-200',
-                  resolvedTheme === 'dark'
-                    ? 'bg-white/10 hover:bg-white/20 border-white/10'
-                    : 'bg-[#ececec] hover:bg-[#dfdfdf] border-[#d4d4d4] shadow-sm'
+                  "w-9 h-9 flex items-center justify-center rounded-full border transition-colors duration-200",
+                  resolvedTheme === "dark"
+                    ? "bg-white/10 hover:bg-white/20 border-white/10"
+                    : "bg-[#ececec] hover:bg-[#dfdfdf] border-[#d4d4d4] shadow-sm"
                 )}
               >
                 <Image
@@ -151,20 +200,25 @@ const getActiveIconSrc = (name: string) => {
         {/* Sliders */}
         {[
           {
-            label: 'Headphones',
-            icon: 'audio-headphones-symbolic',
+            label: "Headphones",
+            icon: "audio-headphones-symbolic",
             value: soundLevel,
             onChange: handleSound,
           },
           {
-            label: 'Brightness',
-            icon: 'display-brightness-symbolic',
+            label: "Brightness",
+            icon: "display-brightness-symbolic",
             value: brightnessLevel,
             onChange: handleBrightness,
           },
         ].map((slider) => (
           <div className="flex items-center gap-3 mb-3" key={slider.label}>
-            <Image src={getInactiveIconSrc(slider.icon)} alt={slider.label} width={20} height={20} />
+            <Image
+              src={getInactiveIconSrc(slider.icon)}
+              alt={slider.label}
+              width={20}
+              height={20}
+            />
             <div className="flex-1">
               <input
                 type="range"
@@ -173,10 +227,10 @@ const getActiveIconSrc = (name: string) => {
                 value={slider.value}
                 onChange={slider.onChange}
                 className={clsx(
-                  'w-full h-2 appearance-none rounded-full outline-none cursor-pointer bg-transparent',
-                  '[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4',
-                  '[&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-orange-600',
-                  '[&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:mt-[-4px]'
+                  "w-full h-2 appearance-none rounded-full outline-none cursor-pointer bg-transparent",
+                  "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4",
+                  "[&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-orange-600",
+                  "[&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:mt-[-4px]"
                 )}
               />
             </div>
@@ -185,40 +239,53 @@ const getActiveIconSrc = (name: string) => {
 
         {/* Status Toggles */}
         <div className="grid grid-cols-2 gap-2 mt-3">
-          {items.map((item,) => {
-            const isDarkModeToggle = item.label === 'Dark Style' && resolvedTheme === 'dark';
+          {items.map((item) => {
+            const isDarkModeToggle =
+              item.label === "Dark Style" && resolvedTheme === "dark";
             const isStatusActive = item.active || isDarkModeToggle;
 
             const getIconSrcFunction = (name: string) => {
-            if(isStatusActive) {
-        return getActiveIconSrc(name);
-    } else {
-        return getInactiveIconSrc(name);
-    }}
+              if (isStatusActive) {
+                return getActiveIconSrc(name);
+              } else {
+                return getInactiveIconSrc(name);
+              }
+            };
 
-            let statusButtonClass = '';
-if (isStatusActive) {
-  statusButtonClass = 'bg-[#f25d27] hover:bg-[#ec4d1f] text-white';
-} else if (resolvedTheme === 'light') {
-  statusButtonClass = 'bg-white hover:bg-[#f0f0f0] text-[#1c1c1c]';
-} else {
-  statusButtonClass = 'bg-white/10 hover:bg-white/20 text-white';
-}
+            let statusButtonClass = "";
+            if (isStatusActive) {
+              statusButtonClass = "bg-[#f25d27] hover:bg-[#ec4d1f] text-white";
+            } else if (resolvedTheme === "light") {
+              statusButtonClass = "bg-white hover:bg-[#f0f0f0] text-[#1c1c1c]";
+            } else {
+              statusButtonClass = "bg-white/10 hover:bg-white/20 text-white";
+            }
 
             return (
               <button
                 key={item.label}
                 onClick={() => handleItemClick(item.label)}
                 className={clsx(
-                  'flex items-center justify-between px-3 py-3 rounded-full cursor-pointer transition-colors duration-200 shadow-sm',
+                  "flex items-center justify-between px-3 py-3 rounded-full cursor-pointer transition-colors duration-200 shadow-sm",
                   statusButtonClass
                 )}
               >
                 <div className="flex items-center gap-2">
-                  <Image src={getIconSrcFunction(item.icon)} alt={item.label} width={20} height={20} />
+                  <Image
+                    src={getIconSrcFunction(item.icon)}
+                    alt={item.label}
+                    width={20}
+                    height={20}
+                  />
                   <div className="flex flex-col">
-                    <span className="text-[13px] font-medium">{item.label}</span>
-                    {item.sub && <span className="text-xs opacity-70 -mt-0.5">{item.sub}</span>}
+                    <span className="text-[13px] font-medium">
+                      {item.label}
+                    </span>
+                    {item.sub && (
+                      <span className="text-xs opacity-70 -mt-0.5">
+                        {item.sub}
+                      </span>
+                    )}
                   </div>
                 </div>
                 {item.arrow && (
@@ -228,7 +295,12 @@ if (isStatusActive) {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 )}
               </button>

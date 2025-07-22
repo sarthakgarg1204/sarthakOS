@@ -1,21 +1,20 @@
-
 type CustomWindowType = string & { _brand?: never };
 
 // Define all allowed window (app) types, matching `apps.config.ts`
 export type WindowType =
-  | 'terminal'
-  | 'calculator'
-  | 'text-editor'
-  | 'files'
-  | 'settings'
-  | 'browser'
-  | 'about'
-  | 'portfolio'
-  | 'trash'
-  | 'gallery'
-  | 'contact'
-  | 'music-player'
-  | 'video-player'
+  | "terminal"
+  | "calculator"
+  | "text-editor"
+  | "files"
+  | "settings"
+  | "browser"
+  | "about"
+  | "portfolio"
+  | "trash"
+  | "gallery"
+  | "contact"
+  | "music-player"
+  | "video-player"
   | CustomWindowType;
 
 // Core window data shape
@@ -43,7 +42,6 @@ export type WindowData = {
 
   // Function to render window screen content
   screen: () => React.ReactElement;
-
 
   prevPosition?: { x: number; y: number };
   prevSize?: { width: number; height: number };

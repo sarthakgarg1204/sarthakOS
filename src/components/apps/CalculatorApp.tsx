@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { Parser } from 'expr-eval';
-import { useEffect, useRef, useState } from 'react';
+import { Parser } from "expr-eval";
+import { useEffect, useRef, useState } from "react";
 
 type TerminalEntry = {
   id: number;
@@ -38,7 +38,7 @@ for (let base = 2; base <= 36; base++) {
 
 export default function CalculatorApp({ id }: Readonly<CalculatorAppProps>) {
   const [entries, setEntries] = useState<TerminalEntry[]>([]);
-  const [currentCommand, setCurrentCommand] = useState('');
+  const [currentCommand, setCurrentCommand] = useState("");
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [isClosing, setIsClosing] = useState(false);
@@ -58,31 +58,34 @@ export default function CalculatorApp({ id }: Readonly<CalculatorAppProps>) {
   }, [entries]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       const cmd = currentCommand.trim();
       if (!cmd) return;
 
       const output = handleCommand(cmd);
       if (output !== null) {
-        setEntries((prev) => [...prev, { id: prev.length, command: cmd, result: output }]);
+        setEntries((prev) => [
+          ...prev,
+          { id: prev.length, command: cmd, result: output },
+        ]);
       }
 
       setHistory((prev) => [...prev, cmd]);
       setHistoryIndex(history.length + 1);
-      setCurrentCommand('');
-    } else if (e.key === 'ArrowUp') {
+      setCurrentCommand("");
+    } else if (e.key === "ArrowUp") {
       if (historyIndex > 0) {
         const index = historyIndex - 1;
         setHistoryIndex(index);
-        setCurrentCommand(history[index] || '');
+        setCurrentCommand(history[index] || "");
       }
-    } else if (e.key === 'ArrowDown') {
+    } else if (e.key === "ArrowDown") {
       if (historyIndex < history.length - 1) {
         const index = historyIndex + 1;
         setHistoryIndex(index);
-        setCurrentCommand(history[index] || '');
+        setCurrentCommand(history[index] || "");
       } else {
-        setCurrentCommand('');
+        setCurrentCommand("");
         setHistoryIndex(history.length);
       }
     }
@@ -91,20 +94,20 @@ export default function CalculatorApp({ id }: Readonly<CalculatorAppProps>) {
   const handleCommand = (cmd: string): string | null => {
     const normalized = cmd.toLowerCase().trim();
 
-    if (normalized === 'clear') {
+    if (normalized === "clear") {
       setEntries([]);
       return null;
     }
 
-    if (normalized === 'exit') {
+    if (normalized === "exit") {
       setIsClosing(true);
       setTimeout(() => {
-        window.dispatchEvent(new CustomEvent('closeWindow', { detail: id }));
+        window.dispatchEvent(new CustomEvent("closeWindow", { detail: id }));
       }, 1000);
-      return 'Exiting Calculator...';
+      return "Exiting Calculator...";
     }
 
-    if (normalized === 'help') {
+    if (normalized === "help") {
       return `📚 Available Commands:
 • Operators: + - * / % ^ =
 • Functions: sin(x), cos(x), sqrt(x), abs(x), round(x)
@@ -113,16 +116,16 @@ export default function CalculatorApp({ id }: Readonly<CalculatorAppProps>) {
 • Commands: help, clear, reset, vars, exit`;
     }
 
-    if (normalized === 'vars') {
+    if (normalized === "vars") {
       const vars = Object.entries(variables.current)
         .map(([key, val]) => `${key} = ${val}`)
-        .join('\n');
-      return vars || 'No variables set.';
+        .join("\n");
+      return vars || "No variables set.";
     }
 
-    if (normalized === 'reset') {
+    if (normalized === "reset") {
       variables.current = {};
-      return 'All variables cleared.';
+      return "All variables cleared.";
     }
 
     try {
@@ -140,7 +143,7 @@ export default function CalculatorApp({ id }: Readonly<CalculatorAppProps>) {
       if (err instanceof Error) {
         return `⚠️ Error: ${err.message}`;
       }
-      return '⚠️ Unknown error occurred.';
+      return "⚠️ Unknown error occurred.";
     }
   };
 
@@ -153,17 +156,27 @@ export default function CalculatorApp({ id }: Readonly<CalculatorAppProps>) {
       role="textbox"
       aria-label="Calculator input area"
     >
-      <div className="mb-1 text-[#FFA07A]">Ubuntu Terminal Calculator v2.12.7</div>
-      <div className="mb-1 text-[#ccc]">Type &quot;help&quot; for instructions.</div>
-      <div className="mb-4 text-[#666]">[Enter to evaluate, ↑↓ for history]</div>
+      <div className="mb-1 text-[#FFA07A]">
+        Ubuntu Terminal Calculator v2.12.7
+      </div>
+      <div className="mb-1 text-[#ccc]">
+        Type &quot;help&quot; for instructions.
+      </div>
+      <div className="mb-4 text-[#666]">
+        [Enter to evaluate, ↑↓ for history]
+      </div>
 
       {entries.map((entry) => (
         <div key={entry.id} className="mb-2">
           <div className="flex">
             <span className="text-green-400 mr-2">&gt;</span>
-            <span className="whitespace-pre-wrap break-words">{entry.command}</span>
+            <span className="whitespace-pre-wrap break-words">
+              {entry.command}
+            </span>
           </div>
-          <div className="ml-6 text-[#98fb98] whitespace-pre-wrap">{entry.result}</div>
+          <div className="ml-6 text-[#98fb98] whitespace-pre-wrap">
+            {entry.result}
+          </div>
         </div>
       ))}
 

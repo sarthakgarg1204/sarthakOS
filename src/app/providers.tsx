@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import useMounted from '@/hooks/useMounted';
-import { ThemeProvider } from 'next-themes';
+import useMounted from "@/hooks/useMounted";
+import { ThemeProvider } from "next-themes";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const mounted = useMounted();

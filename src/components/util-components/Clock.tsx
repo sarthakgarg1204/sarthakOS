@@ -1,8 +1,21 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-const monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const monthList = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 const dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 type ClockProps = {
@@ -44,5 +57,5 @@ export default function Clock({ onlyTime, onlyDay }: Readonly<ClockProps>) {
     <span className="font-mono text-sm md:text-base text-gray-800 dark:text-gray-200">
       {display}
     </span>
-  )
+  );
 }

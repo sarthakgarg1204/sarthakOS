@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import type { WindowData, WindowType } from '@/components/types/windowTypes';
-import UbuntuWindow from '@/components/windowing/UbuntuWindow';
-import { JSX, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import apps, { getAppConfigById } from '../../../apps.config';
+import type { WindowData, WindowType } from "@/components/types/windowTypes";
+import UbuntuWindow from "@/components/windowing/UbuntuWindow";
+import { JSX, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import apps, { getAppConfigById } from "../../../apps.config";
 
 const WORKSPACE_COUNT = 4;
 
@@ -31,7 +31,6 @@ export default function WindowManager({
   const [workspaces, setWorkspaces] = useState<WindowData[][]>(
     Array.from({ length: WORKSPACE_COUNT }, () => [])
   );
-
 
   const zIndexCounter = useRef(2);
   const prevMaximizedRef = useRef<boolean | null>(null);
@@ -87,7 +86,13 @@ export default function WindowManager({
       isMinimized,
       focusedWindows,
     });
-  }, [allWindows, closedWindows, isMinimized, focusedWindows, onWindowStateChange]);
+  }, [
+    allWindows,
+    closedWindows,
+    isMinimized,
+    focusedWindows,
+    onWindowStateChange,
+  ]);
 
   const focusWindow = useCallback(
     (id: string) => {
@@ -134,9 +139,7 @@ export default function WindowManager({
         updated[wsIdx] = updated[wsIdx].filter((w) => w.id !== id);
 
         setTimeout(() => {
-          window.dispatchEvent(
-            new CustomEvent('closeWindow', { detail: id })
-          );
+          window.dispatchEvent(new CustomEvent("closeWindow", { detail: id }));
         }, 0);
 
         return updated;
@@ -176,9 +179,7 @@ export default function WindowManager({
 
   const toggleMinimize = (id: string) => {
     updateCurrentWorkspace((wins) =>
-      wins.map((w) =>
-        w.id === id ? { ...w, isMinimized: !w.isMinimized } : w
-      )
+      wins.map((w) => (w.id === id ? { ...w, isMinimized: !w.isMinimized } : w))
     );
   };
 
@@ -188,7 +189,10 @@ export default function WindowManager({
     );
   };
 
-  const resizeWindow = (id: string, size: { width: number; height: number }) => {
+  const resizeWindow = (
+    id: string,
+    size: { width: number; height: number }
+  ) => {
     updateCurrentWorkspace((wins) =>
       wins.map((w) => (w.id === id ? { ...w, size } : w))
     );
@@ -255,10 +259,10 @@ export default function WindowManager({
 
   useEffect(() => {
     const handlers: [string, (e: CustomEvent<WindowType>) => void][] = [
-      ['launchApp', (e) => openWindow(e.detail as WindowType)],
-      ['restoreMinimized', (e) => restoreWindow(e.detail as string)],
-      ['focusWindow', (e) => focusWindow(e.detail as string)],
-      ['closeWindow', (e) => closeWindow(e.detail as string)],
+      ["launchApp", (e) => openWindow(e.detail as WindowType)],
+      ["restoreMinimized", (e) => restoreWindow(e.detail as string)],
+      ["focusWindow", (e) => focusWindow(e.detail as string)],
+      ["closeWindow", (e) => closeWindow(e.detail as string)],
     ];
 
     handlers.forEach(([event, handler]) =>
@@ -278,8 +282,8 @@ export default function WindowManager({
       {currentWindows.map((win) => (
         <div
           key={win.id}
-          style={{ display: win.isMinimized ? 'none' : 'block' }}
-          className={win.isMaximized ? 'ubuntu-maximized-window' : ''}
+          style={{ display: win.isMinimized ? "none" : "block" }}
+          className={win.isMaximized ? "ubuntu-maximized-window" : ""}
         >
           <UbuntuWindow
             {...win}

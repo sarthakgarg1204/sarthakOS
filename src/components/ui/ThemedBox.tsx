@@ -1,10 +1,10 @@
 // components/ui/ThemedBox.tsx
-'use client';
+"use client";
 
 import useMounted from "@/hooks/useMounted";
-import clsx from 'clsx';
-import { useTheme } from 'next-themes';
-import { CSSProperties, ReactNode } from 'react';
+import clsx from "clsx";
+import { useTheme } from "next-themes";
+import { CSSProperties, ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
@@ -17,8 +17,8 @@ type Props = {
 export default function ThemedBox({
   children,
   className,
-  lightClassName = 'bg-white text-black',
-  darkClassName = 'bg-black text-white',
+  lightClassName = "bg-white text-black",
+  darkClassName = "bg-black text-white",
   style,
 }: Readonly<Props>) {
   const { resolvedTheme } = useTheme();
@@ -30,7 +30,7 @@ export default function ThemedBox({
       style={style}
       className={clsx(
         className,
-        resolvedTheme === 'dark' ? darkClassName : lightClassName
+        resolvedTheme === "dark" ? darkClassName : lightClassName
       )}
     >
       {children}

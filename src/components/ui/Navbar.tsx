@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import CalendarPreview from '@/components/util-components/CalendarPreview';
-import Clock from '@/components/util-components/Clock';
-import Status from '@/components/util-components/Status';
-import StatusCard from '@/components/util-components/StatusCard';
-import clsx from 'clsx';
-import { useEffect, useRef, useState } from 'react';
+import CalendarPreview from "@/components/util-components/CalendarPreview";
+import Clock from "@/components/util-components/Clock";
+import Status from "@/components/util-components/Status";
+import StatusCard from "@/components/util-components/StatusCard";
+import clsx from "clsx";
+import { useEffect, useRef, useState } from "react";
 
 interface NavbarProps {
   lockScreen: () => void;
@@ -13,7 +13,11 @@ interface NavbarProps {
   openActivities: () => void;
 }
 
-export default function Navbar({ lockScreen, shutDown, openActivities }: Readonly<NavbarProps>) {
+export default function Navbar({
+  lockScreen,
+  shutDown,
+  openActivities,
+}: Readonly<NavbarProps>) {
   const [statusCardVisible, setStatusCardVisible] = useState(false);
   const statusWrapperRef = useRef<HTMLDivElement>(null); // wrapper includes both Status + Card
   const [calendarVisible, setCalendarVisible] = useState(false);
@@ -29,8 +33,8 @@ export default function Navbar({ lockScreen, shutDown, openActivities }: Readonl
         setCalendarVisible(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   useEffect(() => {
@@ -43,9 +47,9 @@ export default function Navbar({ lockScreen, shutDown, openActivities }: Readonl
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -80,9 +84,11 @@ export default function Navbar({ lockScreen, shutDown, openActivities }: Readonl
           tabIndex={0}
           onClick={handleStatusClick}
           className={clsx(
-            'px-1 mx-2 flex items-center gap-1 cursor-pointer transition duration-100 ease-in-out border-b-2 border-transparent',
-            statusCardVisible ? 'backdrop-blur-sm bg-white/30 dark:bg-white/10 rounded-full my-1 py-0' : 'py-1'
-            )}
+            "px-1 mx-2 flex items-center gap-1 cursor-pointer transition duration-100 ease-in-out border-b-2 border-transparent",
+            statusCardVisible
+              ? "backdrop-blur-sm bg-white/30 dark:bg-white/10 rounded-full my-1 py-0"
+              : "py-1"
+          )}
         >
           <Status />
         </div>
