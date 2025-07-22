@@ -22,6 +22,7 @@ const apps: AppConfig[] = [
     icon: '/system/user-home.png',
     favourite: true,
     desktop_shortcut: true,
+    component: dynamic(() => import('@/components/apps/AboutSarthak')),
   },
   {
     id: 'chrome',
